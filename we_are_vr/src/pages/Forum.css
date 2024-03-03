@@ -1,0 +1,84 @@
+.forum-page {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* Sidebar width and remaining space for the main area */
+    grid-template-rows: auto 1fr; /* Header height and remaining space for the content */
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .forum-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #333; /* Slight border for separation */
+    grid-column: 1 / -1; /* Header spans across both columns */
+    background-color: #111; /* Dark background for the header */
+  }
+  
+  
+  .back-button,
+  .about-button,
+  .join-button,
+  .write-message-button {
+    background-color: #333; /* Darker buttons */
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    margin-right: 10px; /* Spacing between buttons */
+    cursor: pointer;
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px; /* Spacing after the search bar */
+  }
+  
+  .sidebar {
+    width: 200px; /* Fixed sidebar width */
+    padding: 20px;
+    border-right: 1px solid #333; /* Assuming there's a slight border from the screenshot */
+    overflow-y: auto; /* Adds scroll to each section if content is longer than the screen */
+  }
+  
+  .sidebar-item {
+    padding: 10px;
+    margin-bottom: 10px; /* Spacing between sidebar items */
+    cursor: pointer;
+  }
+  
+  .sidebar-item.active {
+    font-weight: bold;
+  }
+  
+  .forum-main {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Adds scroll to each section if content is longer than the screen */
+  }
+  
+  .forum-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px; /* More space below the title */
+  }
+  
+  .forum-post,
+  .forum-video,
+  .new-post-notification {
+    border: 1px solid #333; /* Assuming there's a slight border from the screenshot */
+    margin-bottom: 20px; /* Spacing between posts */
+    padding: 20px;
+    border-radius: 10px; /* Assuming there's a rounded corner from the screenshot */
+  }
+  
+  .forum-post {
+    display: flex;
+    justify-content: space-between; /* Align user/date to the left and message to the right */
+  }
+  
+  .write-message {
+    position: fixed; /* Fixed position for the write message button */
+    bottom: 20px;
+    right: 20px;
+  }
+  
