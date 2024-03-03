@@ -14,6 +14,7 @@ const ForumPage = () => {
         <h2>Gorilla Tag</h2>
 
       </header>
+      
       <aside className="sidebar">
         <div className="sidebar-item active">Gorilla Tag</div>
         <div className="sidebar-item">Quest 3 Gaming</div>
@@ -21,6 +22,7 @@ const ForumPage = () => {
         <div className="sidebar-item">Beat Saber</div>
         {/* Add more sidebar items here */}
       </aside>
+
       <main className="forum-main">
         <div className="forum-post">
           <div className="user-info">
