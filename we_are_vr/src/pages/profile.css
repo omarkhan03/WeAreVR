@@ -1,0 +1,41 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed; /* This will fix the navbar to the top of the page */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensures the navbar stays on top of other content */
+  }
+  
+  .nav-item {
+    margin: 0; /* Removes margin from nav items */
+  }
+  
+  .nav-search {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Allows the search bar to grow and fill the space */
+  }
+  
+  .nav-search input {
+    width: 50%; /* Adjust the width of the search bar as needed */
+    padding: 8px;
+    margin: 0 auto; /* Centers the search bar */
+  }
+  
+  /* Add some responsiveness to the navbar for smaller screens */
+  @media (max-width: 768px) {
+    .nav-search input {
+      width: 70%; /* Adjust the search bar width on smaller screens */
+    }
+  }
+  
+  /* Ensures the navbar spans the full width of the screen */
+  body {
+    margin-top: 50px; /* Adjust this value so your page content doesn't hide behind the navbar */
+  }
