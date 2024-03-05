@@ -166,3 +166,34 @@
   border-radius: 4px;
   margin-left: 20px; /* Add some space between the heading and the search bar */
 }
+.forums-list {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.forum-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea; /* Visual separation between items */
+  margin-bottom: 10px; /* Space between forum items */
+}
+
+.forum-image {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  /*border-radius: 10%; /* Makes the image round */
+  margin-right: 20px; /* Space between the image and the forum info */
+}
+
+.forum-info h4 {
+  margin: 0 0 5px 0; /* Adjust spacing around the title */
+}
+
+.forum-info p {
+  margin: 0;
+  color: #666; /* Lighter text color for the description */
+  font-size: 0.9em; /* Smaller font size for the description */
+}
