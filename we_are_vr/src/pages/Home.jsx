@@ -14,7 +14,7 @@ function Home({ setPage }) {
       <button onClick={() => setPage('profile')}>Go to Profile</button>
       <Typography>Hello World</Typography>
       <CustomAppBar />
-      <WelcomeMessage isLoggedIn={false} name={"Bobby"}/>
+      <WelcomeMessage isLoggedIn={true} name={"Bobby"}/>
       <Box 
             // height={200}
             my={4}
@@ -23,7 +23,7 @@ function Home({ setPage }) {
             justifyItems={'center'}
             gap={4}
             p={2}
-            sx={{ border: '2px solid grey' }}
+            sx={{ border: '2px solid white' }}
       >
         <TrendingComponent />
       </Box>

@@ -60,19 +60,19 @@ const TrendingComponent = () => {
                 {rows.map((row, rowIndex) => (
                     <tr key={rowIndex}>
                         {row.map((info) => (
-                            <td key={info.id} style={{width: '33%'}}>
-                                {/* maxWidth: 300, margin:'3rem' */}
-                                <Card sx={{ marginTop:'0rem',maxWidth:'100%', maxHeight:400}}>
+                            <td key={info.id} style={{width: '33%', padding: '0 auto'}}>
+                                
+                                <Card sx={{maxWidth: '100%', margin:'3rem', minHeight:200}}>
                                     <CardMedia 
                                         sx={{height:100}}
                                         image={info.imageUrl}
                                         title={info.name}
                                     />
                                     <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
+                                        <Typography gutterBottom variant="h5" component="div" sx={{whiteSpace:'nowrap'}}>
                                             {info.name}
                                         </Typography>
-                                        <Typography variant="body2" color="text.secondary" noWrap={false}>
+                                        <Typography variant="body2" color="text.secondary" height={20}>
                                             {info.description}
                                         </Typography>
                                     </CardContent>
