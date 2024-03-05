@@ -1,34 +1,44 @@
-import React from 'react';
-import Typography from '@mui/material/Typography';
-import CustomAppBar from '../components/CustomAppBar';
+import React from "react";
+import Typography from "@mui/material/Typography";
+import CustomAppBar from "../components/CustomAppBar";
 import WelcomeMessage from "../components/WelcomeMessage";
-import { Box } from '@mui/material';
-import TrendingComponent from '../components/TrendingComponent';
-
+import { Box } from "@mui/material";
+import TrendingComponent from "../components/TrendingComponent";
+import SideBar from "../components/SideBar";
 
 function Home({ setPage }) {
   return (
     <div>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "250px 1fr",
+          background: "inherit",
+        }}
+      >
+        <SideBar />
+        <div>
       <h1>Home Page</h1>
-      <button onClick={() => setPage('forum')}>Go to Forum</button>
-      <button onClick={() => setPage('profile')}>Go to Profile</button>
-      <Typography>Hello World</Typography>
-      <CustomAppBar />
-      <WelcomeMessage isLoggedIn={true} name={"Bobby"}/>
-      <Box 
+      <button style={{color:'white'}} onClick={() => setPage('forum')}>Go to Forum</button>
+      <button style={{color:'white'}} onClick={() => setPage('profile')}>Go to Profile</button>
+          <CustomAppBar />
+          <WelcomeMessage isLoggedIn={true} name={"Bobby"} />
+          <Box
             // height={200}
             my={4}
             // display="flex"
             alignItems="center"
-            justifyItems={'center'}
+            justifyItems={"center"}
             gap={4}
             p={2}
-            sx={{ border: '2px solid white' }}
-      >
-        <TrendingComponent />
+            sx={{ border: "2px solid white", margin: "0 2rem" }}
+          >
+            <TrendingComponent />
+          </Box>
+        </div>
       </Box>
     </div>
   );
 }
 
-export default Home
+export default Home;
