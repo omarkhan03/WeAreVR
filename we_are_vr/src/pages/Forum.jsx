@@ -1,50 +1,131 @@
 import React from 'react';
 import "./Forum.css"
+import { Box } from "@mui/material";
+import SideBar from "../components/SideBar";
+
+
 
 const ForumPage = () => {
+
   return (
-    <div className="forum-page">
-      <header className="forum-header">
-        <button className="back-button">{'<'}</button>
-        <input type="search" placeholder="Search" />
-        <div className="header-icons">
-          <button className="about-button">?</button>
-          <button className="join-button">+</button>
-        </div>
-        <h2>Gorilla Tag</h2>
+    <div>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "250px 1fr",
+          background: "inherit",
+        }}
+      >
+        <SideBar />
+        <div className="forum-page">
 
-      </header>
-      
-      <aside className="sidebar">
-        <div className="sidebar-item active">Gorilla Tag</div>
-        <div className="sidebar-item">Quest 3 Gaming</div>
-        <div className="sidebar-item">Valve Index</div>
-        <div className="sidebar-item">Beat Saber</div>
-        {/* Add more sidebar items here */}
-      </aside>
-
-      <main className="forum-main">
-        <div className="forum-post">
-          <div className="user-info">
-            <span>user</span>
-            <span>date</span>
+        <header className="forum-header">
+          <button className="back-button">{'<'}</button>
+          <div>
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <h2>Gorilla Tag</h2>
           </div>
-          <div className="message">message</div>
+
+
+          {/* <input type="search" placeholder="Search" /> */}
+          <div className="header-icons">
+            <button className="about-button">About</button>
+            <button className="join-button">Join Forum</button>
+            <button className="settings-button">Settings</button>
+
+          </div>
+        </header>
+
+
+        <main className="forum-main">
+        <div className="messages-container">
+          {/* Sample messages */}
+
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
+                <div className="message-user">Monkey3</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+            </div>
+          </div>
+
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
+                <div className="message-user">GorillaBoy</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+            </div>
+          </div>
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
+                <div className="message-user">Monkey3</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+            </div>
+          </div>
+
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
+                <div className="message-user">GorillaBoy</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+            </div>
+          </div>
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
+                <div className="message-user">Monkey3</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+            </div>
+          </div>
+
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
+                <div className="message-user">GorillaBoy</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+            </div>
+          </div>
+
+
+          {/* Repeat for each message */}
         </div>
-        {/* Repeat forum-post for each post */}
-        <div className="forum-video">
-          {/* Placeholder for video */}
-        </div>
-        <div className="new-post-notification">
-          New GT map demonstration
-          {/* Icons and other elements */}
-        </div>
-        <div className="write-message">
-          <button className="write-message-button">+</button>
+        <div className="message-input-container">
+          <input type="text" className="message-input" placeholder="Type a message..." />
+          <button className="send-message-button">Send</button>
         </div>
       </main>
+
+</div>
+      </Box>
     </div>
   );
+
+
 };
 
 export default ForumPage;
