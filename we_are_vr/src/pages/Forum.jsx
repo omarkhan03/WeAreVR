@@ -16,7 +16,7 @@ const ForumPage = () => {
           background: "inherit",
         }}
       >
-        <SideBar />
+        <SideBar showSearch={1}/>
         <div className="forum-page">
 
         <header className="forum-header">

@@ -14,7 +14,7 @@ export default function ButtonAppBar() {
 
             <Typography >WEAREVR</Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <SearchFunction />
+            <SearchFunction barWidth={"50rem"}/>
           </Typography>
 
           <Box sx={{ display: 'flex', mr: '1em' }}>

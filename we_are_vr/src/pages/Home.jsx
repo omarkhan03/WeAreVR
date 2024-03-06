@@ -16,7 +16,7 @@ function Home({ setPage }) {
           background: "inherit",
         }}
       >
-        <SideBar />
+        <SideBar showSearch={0}/>
         <div>
       <button style={{color:'white'}} onClick={() => setPage('forum')}>Go to Forum</button>
       <button style={{color:'white'}} onClick={() => setPage('profile')}>Go to Profile</button>

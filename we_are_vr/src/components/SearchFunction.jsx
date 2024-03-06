@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Input from '@mui/material/Input';
 
-const SearchFunction = () => {
+const SearchFunction = ( {barWidth} ) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearch = (event) => {
@@ -16,7 +16,7 @@ const SearchFunction = () => {
                 placeholder="Enter search term" 
                 onChange= {handleSearch}
                 value={searchTerm}
-                sx={{backgroundColor: "white", marginRight:"1rem", width:"50%"}}
+                sx={{backgroundColor: "white", margin:"0 1rem", width:barWidth}}
             />
             {/* <Button variant="contained"  onClick={handleSearch} size='large' sx={{color:'red'}}>Search</Button> */}
         </div>
