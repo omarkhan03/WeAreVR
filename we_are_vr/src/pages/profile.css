@@ -197,3 +197,23 @@ margin: 0;
 color: #666; /* Lighter text color for the description */
 font-size: 0.9em; /* Smaller font size for the description */
 }
+
+/* .edit-button 
+.save-description-button {
+  width:auto
+} */
+
+.description-section {
+  display: flex;
+  /* gap: 1rem; */
+  align-items: center;
+  justify-content: center;
+}
+
+.description-section * {
+margin:1rem;
+}
+
+.description-section button {
+height: 50%
+  }

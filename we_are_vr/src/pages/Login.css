@@ -23,13 +23,14 @@
   }
   
   .input-group input {
-    width: 100%;
+    /* margin: auto; */
+    width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  button {
+  .submit-button {
     width: 100%;
     padding: 10px;
     border: none;
@@ -37,9 +38,9 @@
     background-color: #007bff;
     color: white;
     cursor: pointer;
-  }
+  } */
   
-  button:hover {
+  .submit-button:hover {
     background-color: #0056b3;
   }
   
