@@ -21,8 +21,6 @@ function Home({ setPage }) {
       <button style={{color:'white'}} onClick={() => setPage('forum')}>Go to Forum</button>
       <button style={{color:'white'}} onClick={() => setPage('profile')}>Go to Profile</button>
       <button style={{color:'white'}} onClick={() => setPage('login')}>Go to Login</button>
-      <button style={{color:'white'}} onClick={() => setPage('VisitProfile')}>Go to VisitProfile</button>
-
           <CustomAppBar />
           <WelcomeMessage isLoggedIn={true} name={"Aryan"} />
           <Box
