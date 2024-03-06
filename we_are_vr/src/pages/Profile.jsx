@@ -37,7 +37,7 @@ function Profile({ setPage }) {
   return (
     <>
 <nav className="navbar">
-      <div className="nav-item" id="home"> <button style={{color:"white"}} onClick={() => setPage('login')}>Home</button></div>
+      <div className="nav-item" id="home"> <button style={{color:"white"}} onClick={() => setPage('home')}>Home</button></div>
       <div className="nav-search">
         <input type="text" placeholder="Search..." />
       </div>
