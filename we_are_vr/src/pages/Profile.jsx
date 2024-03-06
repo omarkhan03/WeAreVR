@@ -1,5 +1,7 @@
 import React,{ useState } from 'react';
 import './profile.css';
+import SearchFunction from "../components/SearchFunction";
+
 const forums = [
   {
     id: 1,
@@ -39,7 +41,7 @@ function Profile({ setPage }) {
 <nav className="navbar">
       <div className="nav-item" id="home"> <button style={{color:"white"}} onClick={() => setPage('home')}>Home</button></div>
       <div className="nav-search">
-        <input type="text" placeholder="Search..." />
+        {/* <input type="text" placeholder="Search..." /> */}
       </div>
       <div className="nav-item" id="login">Welcome Back, {name}</div>
     </nav>
@@ -57,7 +59,7 @@ function Profile({ setPage }) {
       <div className="profile-name"> {/* Add this div for the name */}
           <h2 style={{color:"white"}}>{name}</h2> {/* Display the name */}
         </div>
-      <div className="description-section">
+      <div className="description-section" >
         <textarea
           className="description-edit"
           value={description}
@@ -67,7 +69,8 @@ function Profile({ setPage }) {
       </div>
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
-        <input type="text" placeholder='Search..' className='forum-search'/>
+        {/* <input type="text" placeholder='Search..' className='forum-search'/> */}
+        <SearchFunction barWidth="20rem;"/>
       </div>
       <div className="forums-list">
         {forums.map(forum => (
