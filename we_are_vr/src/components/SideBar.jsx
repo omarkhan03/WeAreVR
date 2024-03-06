@@ -9,8 +9,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import SearchFunction from "./SearchFunction";
 
-export default function TheSideBar() {
+export default function TheSideBar( {showSearch}) {
 
     //New component named MyListItemIcon that takes two props: text and image
     //Inside the component, we render an img tag with the provided image path, alt text, and size.
@@ -30,7 +31,10 @@ MyListItemIcon.propTypes = {
             Subscribed Forums
         </Typography>
         <Divider variant="middle" />
-        <input type="search" placeholder="Search forums" />
+        {/* <input type="search" placeholder="Search forums" /> */}
+        
+
+        {showSearch ? <SearchFunction barWidth="13rem"/> : null}
       <List>
         {["v/BeatSaber", "v/GorillaTag", "v/Quest3", "v/Quest2"].map((text, index) => (
             <ListItem key={text} disablePadding>
