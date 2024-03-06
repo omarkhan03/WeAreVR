@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import Forum from './pages/Forum';
 import Profile from './pages/Profile';
+import Login from './pages/Login';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -15,6 +16,8 @@ function App() {
         return <Forum setPage={setPage} />;
       case 'profile':
         return <Profile setPage={setPage} />;
+      case 'login':
+        return <Login setPage={setPage} />;
       default:
         return <Home setPage={setPage} />;
     }
