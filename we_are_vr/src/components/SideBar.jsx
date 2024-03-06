@@ -30,6 +30,7 @@ MyListItemIcon.propTypes = {
             Subscribed Forums
         </Typography>
         <Divider variant="middle" />
+        <input type="search" placeholder="Search forums" />
       <List>
         {["v/BeatSaber", "v/GorillaTag", "v/Quest3", "v/Quest2"].map((text, index) => (
             <ListItem key={text} disablePadding>
