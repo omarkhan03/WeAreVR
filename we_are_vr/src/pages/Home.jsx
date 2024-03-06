@@ -18,11 +18,10 @@ function Home({ setPage }) {
       >
         <SideBar />
         <div>
-      <h1>Home Page</h1>
       <button style={{color:'white'}} onClick={() => setPage('forum')}>Go to Forum</button>
       <button style={{color:'white'}} onClick={() => setPage('profile')}>Go to Profile</button>
           <CustomAppBar />
-          <WelcomeMessage isLoggedIn={true} name={"Bobby"} />
+          <WelcomeMessage isLoggedIn={true} name={"Aryan"} />
           <Box
             // height={200}
             my={4}
