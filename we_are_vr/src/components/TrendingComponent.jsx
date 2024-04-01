@@ -65,11 +65,9 @@ const TrendingComponent = () => {
                                     <Card
                                         sx={{
                                             maxWidth: '100%', margin: '3rem', minHeight: 200,
-                                            '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.04)', cursor: 'pointer'}
+                                            // '&:hover': {cursor: 'pointer'}
                                         }}
-                                        onMouseEnter={(e) => e.currentTarget.style.transition = '0.3s'}
-                                        onMouseLeave={(e) => e.currentTarget.style.transition = '0.3s'}
-                                        onClick={() => alert('Forum Clicked')}
+                                        // onClick={() => alert('Forum Clicked')}
                                     >
                                         <CardMedia
                                             sx={{ height: 100 }}
