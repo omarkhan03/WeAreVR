@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import './Login.css'; // Make sure the CSS file is in the same directory and named 'Login.css'
 
-function Login({setPage}) {
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle login logic here
-    console.log('Login Submitted', { username, password });
+    if (username === 'Aryan' && password === '123') {
+      // Redirect to the home page
+      window.location.href = '/Home';
+      console.log('Login Submitted', { username, password });
+    }
+    else {
+      alert('Invalid username or password');
+    }
   };
 
   return (
@@ -33,7 +40,7 @@ function Login({setPage}) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className='submit-button' type="submit">Login</button>
+        <button  className='submit-button' type="submit">Login</button>
       </form>
     </div>
   );
