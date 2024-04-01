@@ -4,11 +4,19 @@ import './Login.css'; // Make sure the CSS file is in the same directory and nam
 function Login({setPage}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPopup, setShowPopup] = useState(false); // New state to control popup visibility
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle login logic here
     console.log('Login Submitted', { username, password });
+  };
+
+  const handleForgotPassword = () => {
+    // Simulate email sending logic here
+    setShowPopup(true); // Show the popup
+    // Optionally, hide the popup after a few seconds
+    setTimeout(() => setShowPopup(false), 3000);
   };
 
   return (
@@ -33,8 +41,16 @@ function Login({setPage}) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className='submit-button' type="submit">Login</button>
+        <div className="form-footer">
+  <button className='submit-button' type="submit">Login</button>
+  <span className="forgot-password" onClick={handleForgotPassword}>Forgot Password?</span>
+</div>
       </form>
+      {showPopup && (
+        <div className="popup">
+          Email Sent To reset
+        </div>
+      )}
     </div>
   );
 }
