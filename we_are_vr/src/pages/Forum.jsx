@@ -52,10 +52,21 @@ const ForumPage = () => {
             <img src="../../images/gorilla.jpeg" alt="" />
             <div>
               <div>
+                <div className="message-user">GorillaBoy</div>
+                <div className="date">Mar 6 3:02am</div>
+              </div>
+              <div className="message-text">Hey do you wanna see some awesome clips I recorded yesterday?</div>
+            </div>
+          </div>
+
+          <div className="message">
+            <img src="../../images/gorilla.jpeg" alt="" />
+            <div>
+              <div>
                 <div className="message-user">Monkey3</div>
                 <div className="date">Mar 6 3:02am</div>
               </div>
-              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+              <div className="message-text">Sure lets see them.</div>
             </div>
           </div>
 
@@ -67,53 +78,7 @@ const ForumPage = () => {
                 <div className="message-user">GorillaBoy</div>
                 <div className="date">Mar 6 3:02am</div>
               </div>
-              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
-            </div>
-          </div>
-
-          <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
-            <div>
-              <div>
-                <div className="message-user">Monkey3</div>
-                <div className="date">Mar 6 3:02am</div>
-              </div>
-              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
-            </div>
-          </div>
-
-
-          <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
-            <div>
-              <div>
-                <div className="message-user">GorillaBoy</div>
-                <div className="date">Mar 6 3:02am</div>
-              </div>
-              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
-            </div>
-          </div>
-
-          <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
-            <div>
-              <div>
-                <div className="message-user">Monkey3</div>
-                <div className="date">Mar 6 3:02am</div>
-              </div>
-              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
-            </div>
-          </div>
-
-
-          <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
-            <div>
-              <div>
-                <div className="message-user">GorillaBoy</div>
-                <div className="date">Mar 6 3:02am</div>
-              </div>
-              <div className="message-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae minima neque, quidem explicabo laborum tenetur, molestiae repellendus voluptatum eius inventore provident illo, ad debitis quis mollitia commodi deleniti adipisci excepturi!</div>
+              <div className="message-text">Aight here it is! Enjoy</div>
             </div>
           </div>
 
