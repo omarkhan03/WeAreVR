@@ -2,8 +2,12 @@ import React from 'react';
 import "./Forum.css"
 import { Box } from "@mui/material";
 import SideBar from "../components/SideBar";
+
 import ButtonAppBar from '../components/CustomAppBar';
 import { color } from '@mui/system';
+
+
+import CustomAppBar from "../components/CustomAppBar";
 
 
 const ForumPage = () => {
@@ -17,7 +21,8 @@ const ForumPage = () => {
           background: "inherit",
         }}
       >
-        <SideBar showSearch={1}/>
+        
+        <SideBar />
         <div className="forum-page">
 
         <ButtonAppBar></ButtonAppBar>
