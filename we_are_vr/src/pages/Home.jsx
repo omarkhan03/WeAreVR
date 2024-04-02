@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import CustomAppBar from "../components/CustomAppBar";
 import WelcomeMessage from "../components/WelcomeMessage";
@@ -7,6 +7,13 @@ import TrendingComponent from "../components/TrendingComponent";
 import SideBar from "../components/SideBar";
 
 function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(savedIsLoggedIn === 'true');
+  }, []);
+
   return (
     <div>
       <Box
@@ -16,10 +23,10 @@ function Home() {
           background: "inherit",
         }}
       >
-        <SideBar showSearch={0}/>
+        <SideBar/>
         <div>
           <CustomAppBar />
-          <WelcomeMessage isLoggedIn={true} name={"Aryan"} />
+          <WelcomeMessage isLoggedIn={isLoggedIn} name={"Aryan"} />
           <Box
             // height={200}
             my={4}

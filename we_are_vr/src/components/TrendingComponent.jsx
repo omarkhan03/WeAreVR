@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import './homePageStyle.css';
+import { Link } from 'react-router-dom';
 
 const TrendingComponent = () => {
     // Assuming you have an array of forumInfo objects
@@ -54,17 +55,17 @@ const TrendingComponent = () => {
 
     return (
         <div>
-            <h2>Trending Forums</h2>
+            <h2 style={{margin:0}}>Trending Forums</h2>
             <table >
-                <tbody style={{ justifyContent: 'center', alignItems: 'center', justifyItems: 'center' }}>
+                <tbody style={{ justifyContent: 'center', alignItems: 'center', justifyItems: 'center'}}>
                     {rows.map((row, rowIndex) => (
                         <tr key={rowIndex}>
                             {row.map((info) => (
                                 <td key={info.id} style={{ width: '33%', padding: '0 auto' }}>
-
+                                    <Link to="/Forum">
                                     <Card
                                         sx={{
-                                            maxWidth: '100%', margin: '3rem', minHeight: 200,
+                                            maxWidth: '100%', margin: '2rem 3rem',  minHeight: 200,
                                             // '&:hover': {cursor: 'pointer'}
                                         }}
                                         // onClick={() => alert('Forum Clicked')}
@@ -83,6 +84,7 @@ const TrendingComponent = () => {
                                             </Typography>
                                         </CardContent>
                                     </Card>
+                                    </Link>
                                 </td>
                             ))}
                         </tr>

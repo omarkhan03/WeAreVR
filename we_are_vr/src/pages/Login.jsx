@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import './Login.css'; // Make sure the CSS file is in the same directory and named 'Login.css'
+import { useHistory } from 'react-router-dom';
 
-function Login() {
+
+function Login({ setLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle login logic here
     if (username === 'Aryan' && password === '123') {
       // Redirect to the home page
-      window.location.href = '/Home';
+      setLoggedIn(true);
+      localStorage.setItem('isLoggedIn', 'true');
+
+      history.push('/Home');
+
       console.log('Login Submitted', { username, password });
     }
     else {
