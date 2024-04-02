@@ -49,7 +49,7 @@ const ForumPage = () => {
 
 
           <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
+            <img src="../../images/gorilla2.jpeg" alt="" />
             <div>
               <div>
                 <div className="message-user">GorillaBoy</div>
@@ -60,7 +60,7 @@ const ForumPage = () => {
           </div>
 
           <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
+            <img src="../../images/gorilla3.webp" alt="" />
             <div>
               <div>
                 <div className="message-user">Monkey3</div>
@@ -72,7 +72,7 @@ const ForumPage = () => {
 
 
           <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
+            <img src="../../images/gorilla2.jpeg" alt="" />
             <div>
               <div>
                 <div className="message-user">GorillaBoy</div>
@@ -83,7 +83,7 @@ const ForumPage = () => {
           </div>
 
           <div className="message">
-            <img src="../../images/gorilla.jpeg" alt="" />
+            <img src="../../images/gorilla2.jpeg" alt="" />
             <div>
               <div>
                 <div className="message-user">GorillaBoy</div>
