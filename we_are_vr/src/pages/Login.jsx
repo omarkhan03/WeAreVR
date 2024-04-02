@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import './Login.css'; // Make sure the CSS file is in the same directory and named 'Login.css'
+import { useHistory } from 'react-router-dom';
 
-function Login({setPage}) {
+
+function Login({ setLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const [showPopup, setShowPopup] = useState(false); // New state to control popup visibility
+
+  const history = useHistory();
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle login logic here
-    console.log('Login Submitted', { username, password });
+    if (username === 'Aryan' && password === '123') {
+      // Redirect to the home page
+      setLoggedIn(true);
+      localStorage.setItem('isLoggedIn', 'true');
+
+      history.push('/Home');
+
+      console.log('Login Submitted', { username, password });
+    }
+    else {
+      alert('Invalid username or password');
+    }
   };
 
   const handleForgotPassword = () => {
@@ -41,10 +58,14 @@ function Login({setPage}) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <div className="form-footer">
   <button className='submit-button' type="submit">Login</button>
   <span className="forgot-password" onClick={handleForgotPassword}>Forgot Password?</span>
 </div>
+
+    <button  className='submit-button' type="submit">Login</button>
+
       </form>
       {showPopup && (
         <div className="popup">
