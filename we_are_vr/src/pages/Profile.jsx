@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './profile.css';
 import SearchFunction from "../components/SearchFunction";
 import CustomAppBar from "../components/CustomAppBar";
+import SearchSubcriptions from '../components/SearchSubcriptions';
 
 const forums = [
   {
@@ -65,7 +66,7 @@ function Profile({ setPage }) {
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
         {/* <input type="text" placeholder='Search..' className='forum-search'/> */}
-        <SearchFunction barWidth="20rem;" />
+        <SearchSubcriptions barWidth="40rem;" />
       </div>
       <div className="forums-list">
         {forums.map(forum => (

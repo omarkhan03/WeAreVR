@@ -4,7 +4,6 @@ import CustomAppBar from "../components/CustomAppBar";
 function VisitProfile({ setPage }) {
   return (
     <>
-
       <CustomAppBar />
       <div className="VisitProfile-cover-photo"></div>
       <div className="profile-section">
