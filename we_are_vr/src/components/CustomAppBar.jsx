@@ -15,7 +15,6 @@ export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const history = useHistory();
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  // localStorage.setItem('SubscribedForums', JSON.stringify(subscribedForums));
 
 
   const handleMenuOpen = (event) => {
@@ -33,7 +32,6 @@ export default function ButtonAppBar() {
 
   const navigateToLogin = () => {
     localStorage.removeItem('isLoggedIn'); // Remove the login state
-    localStorage.removeItem('SubscribedForums'); // Remove the login state
 
     history.push('/Login');
     handleMenuClose();

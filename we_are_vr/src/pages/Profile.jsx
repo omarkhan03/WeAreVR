@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import './profile.css';
 import CustomAppBar from "../components/CustomAppBar";
 import ProfileSearchSubscriptions from '../components/ProfileSearchSubcriptions';
-import subscribedForums from '../Data/SubscribedForums';
 
 function Profile({ setPage }) {
   const [description, setDescription] = useState('This is a default description.');
   const [name, setName] = useState('Aryan');
   const [searchedForum, setSearchedForum] = useState('');
-  const [allsubscribedForums, setAllSubscribedForums] = useState(subscribedForums);
+  const [allsubscribedForums, setAllSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -21,11 +20,9 @@ function Profile({ setPage }) {
   const filteredForums = allsubscribedForums.filter(forum => forum.name.toLowerCase().includes(searchedForum.toLowerCase()));
 
   const removeSelectedForum = (id) => {
-
-    const updatedForums = allsubscribedForums.filter(forum => forum.id !== id);
-    setAllSubscribedForums(updatedForums);
-    const updatedForumsFileContent = `const allsubscribedForums = ${JSON.stringify(updatedForums, null, 4)};\nexport default subscribedForums;`;
-    console.log(updatedForumsFileContent);
+    const newSubscribedForums = allsubscribedForums.filter(forum => forum.id !== id);
+    setAllSubscribedForums(newSubscribedForums);
+    localStorage.setItem('SubscribedForums', JSON.stringify(newSubscribedForums));
   }
 
   return (
@@ -55,7 +52,6 @@ function Profile({ setPage }) {
       </div>
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
-        {/* <input type="text" placeholder='Search..' className='forum-search'/> */}
         <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />
       </div>
       <div className="forums-item">

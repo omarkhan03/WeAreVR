@@ -5,18 +5,20 @@ import subscribedForums from '../Data/SubscribedForums';
 
 const ProfileSearchSubcriptions = ({ barWidth, onForumChange }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [forums, setForums] = useState(subscribedForums);
+    const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
 
     const handleForumClick = (forumName) => {
         setSearchTerm(forumName);
         onForumChange(forumName);
-
+        setForums(JSON.parse(localStorage.getItem('SubscribedForums')));
+        
       };
 
     
     const handleInputChange = (val) => {
         setSearchTerm(val);
         onForumChange(val);
+        setForums(JSON.parse(localStorage.getItem('SubscribedForums')));
         filteredForums;
       };
       const filteredForums = forums.filter(forum => forum.name.toLowerCase().includes(searchTerm.toLowerCase()));
