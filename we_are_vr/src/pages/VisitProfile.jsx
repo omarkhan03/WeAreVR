@@ -8,7 +8,7 @@ function VisitProfile({ setPage }) {
       <div className="VisitProfile-cover-photo"></div>
       <div className="profile-section">
         <div className="profile-picture">
-          <img src="../../images/gorilla.jpeg" alt="Profile" />
+          <img src="../../images/" alt="Profile" />
         </div>
       </div>
       <div className="profile-name">
