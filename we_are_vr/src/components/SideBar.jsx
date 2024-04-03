@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -11,11 +11,11 @@ import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import SearchSubcriptions from "./searchFunctions/SearchSubcriptions";
 import { useHistory } from 'react-router-dom';
-import subscribedForums from "../Data/SubscribedForums";
 
 export default function TheSideBar() {
   const history = useHistory();
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const [getSubscribedForums, setGetSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
 
 
   //New component named MyListItemIcon that takes two props: text and image
@@ -41,7 +41,7 @@ export default function TheSideBar() {
       {
         isLoggedIn ? (
           <><SearchSubcriptions barWidth="13rem" /><List>
-            {subscribedForums.map((forum) => (
+            {getSubscribedForums.map((forum) => (
               <ListItem key={forum.id} disablePadding>
                 {/* <ListItemButton onClick={() => history.push(`/Forum${text.replace('v/', '')}`)}> */}
                 <ListItemButton onClick={() => history.push(`/Forum`)}>

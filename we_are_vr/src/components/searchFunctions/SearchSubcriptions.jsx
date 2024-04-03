@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useHistory } from 'react-router-dom';
-import subscribedForums from '../../Data/SubscribedForums';
 import handleForumClick from '../../utils/ForumNavigation';
 
 const SearchSubcriptions = ( {barWidth} ) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [forums, setForums] = useState(subscribedForums);
+    const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
+
     const history = useHistory();
 
     const filteredForums = forums.filter(forum => forum.name.toLowerCase().includes(searchTerm.toLowerCase()));
