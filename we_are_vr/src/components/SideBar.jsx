@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -22,7 +22,7 @@ export default function TheSideBar() {
   //Inside the component, we render an img tag with the provided image path, alt text, and size.
   const MyListItemIcon = ({ text, image }) => (
     <ListItemIcon>
-      <img src={image} alt={text} width="24" height="24" />
+      <img src={image} alt={text} width="30" height="30" />
     </ListItemIcon>
   );
 
@@ -43,29 +43,30 @@ export default function TheSideBar() {
           <><SearchSubcriptions barWidth="13rem" /><List>
             {getSubscribedForums.map((forum) => (
               <ListItem key={forum.id} disablePadding>
-                {/* <ListItemButton onClick={() => history.push(`/Forum${text.replace('v/', '')}`)}> */}
                 <ListItemButton onClick={() => history.push(`/Forum`)}>
-                  <MyListItemIcon text={forum.name} image="../images/vrImg.jpg" />
-                  <ListItemText primary={forum.name} />
+                  <MyListItemIcon text={forum.name} image={forum.imageUrl} />
+                  <ListItemText >
+                    <Typography sx={{fontSize:'1.3rem'}}>{forum.name}</Typography>
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
             ))}
           </List></>
         ) : ( //else user is not logged in so show login button
-          <Typography variant="h6"><a style={{text_Decoration: 'none', color: 'red', textDecoration: 'underline'}} href="/login" >Login</a> to view your Subscribed Forums</Typography>
-  )
-}
+          <Typography variant="h6"><a style={{ text_Decoration: 'none', color: 'red', textDecoration: 'underline' }} href="/login" >Login</a> to view your Subscribed Forums</Typography>
+        )
+      }
     </Box >
   );
-return (
-  <div style={{ width: 250 }}>
-    <Drawer variant="permanent" open anchor="left"
-      PaperProps={{
-        sx: { backgroundColor: 'grey' }
-      }}
-    >
-      {DrawerList}
-    </Drawer>
-  </div>
-);
+  return (
+    <div style={{ width: 250 }}>
+      <Drawer variant="permanent" open anchor="left"
+        PaperProps={{
+          sx: { backgroundColor: 'grey' }
+        }}
+      >
+        {DrawerList}
+      </Drawer>
+    </div>
+  );
 }

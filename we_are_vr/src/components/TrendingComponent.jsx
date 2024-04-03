@@ -28,9 +28,7 @@ const TrendingComponent = () => {
                                     <Card
                                         sx={{
                                             maxWidth: '100%', margin: '2rem 3rem',  minHeight: 200,
-                                            // '&:hover': {cursor: 'pointer'}
                                         }}
-                                        // onClick={() => alert('Forum Clicked')}
                                     >
                                         <CardMedia
                                             sx={{ height: 100 }}
