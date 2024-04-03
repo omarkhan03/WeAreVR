@@ -2,38 +2,39 @@ import React, { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useHistory } from 'react-router-dom';
+import allForums from '../Data/allForums';
 
 const SearchFunction = ({ barWidth }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [forums, setForums] = useState(["Gorilla tag", "Beat saber", "Quest 3", "Quest 2", "GTA VI", "GTA V", "Spiderman", "valve", "MineCraft", "Fortnite", "Apex Legends"]);
+    const [forums, setForums] = useState(allForums); // Set initial state to allForums
     const history = useHistory();
 
     const handleForumClick = (forumName) => {
         const forumPaths = {
-            "Gorilla tag": "/Forum",
-            "Quest 3": "/Home",
-            "Quest 2": "/Profile",
-            "GTA VI": "/Forum",
-            "GTA V": "/Forum",
-            "Spiderman": "/Forum",
-            "valve": "/Forum",
-            "MineCraft": "/Forum",
-            "Fortnite": "/Forum",
-            "Apex Legends": "/Forum",
-            "Beat saber": "/Forum",
+            "v/Gorilla Tag": "/Forum",
+            "v/Quest 3": "/Home",
+            "v/Quest 2": "/Profile",
+            "v/GTA VI": "/Forum",
+            "v/GTA V": "/Forum",
+            "v/Spiderman": "/Forum",
+            "v/valve": "/Forum",
+            "v/MineCraft": "/Forum",
+            "v/Fortnite": "/Forum",
+            "v/Apex Legends": "/Forum",
+            "v/BeatSaber": "/Forum",
             // Add the rest of the forums and their paths here
         };
 
         history.push(forumPaths[forumName]);
     };
 
-    const filteredForums = forums.filter(forum => forum.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredForums = forums.filter(forum => forum.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <Autocomplete
             value={searchTerm}
             onChange={(event, newValue) => setSearchTerm(newValue ? newValue : '')}
-            options={filteredForums}
+            options={filteredForums.map(forums => forums.name)}
             renderInput={(params) => (
                 <TextField
                     {...params}

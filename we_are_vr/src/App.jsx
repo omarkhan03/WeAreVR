@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/VisitProfile" render={() => <VisitProfile />} />
       </div>
     </Router>
+
   );
 }
 

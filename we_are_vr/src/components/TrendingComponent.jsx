@@ -5,52 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import './homePageStyle.css';
 import { Link } from 'react-router-dom';
+import TrendingForums from '../Data/TrendingForums';
 
 const TrendingComponent = () => {
-    // Assuming you have an array of forumInfo objects
-    const forumInfo = [
-        {
-            id: 1,
-            name: 'v/Gorilla Tag',
-            description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
-            imageUrl: '../../images/vrImg.jpg',
-        },
-        {
-            id: 2,
-            name: 'v/Quest 3',
-            description: 'Description 2',
-            imageUrl: '../../images/vrImg.jpg',
-        },
-        {
-            id: 3,
-            name: 'v1/GTA VI',
-            description: 'Description 1',
-            imageUrl: '../../images/vrImg.jpg',
-        },
-        {
-            id: 4,
-            name: 'v/BeatSaber',
-            description: 'Description 2',
-            imageUrl: '../../images/vrImg.jpg',
-        },
-        {
-            id: 5,
-            name: 'v/Quest 2',
-            description: 'Description 1',
-            imageUrl: '../../images/vrImg.jpg',
-        },
-        {
-            id: 6,
-            name: 'v/valve',
-            description: 'Description 2',
-            imageUrl: '../../images/vrImg.jpg',
-        },
-    ];
 
     // Split the forumInfo array into chunks of 3
     const rows = [];
-    for (let i = 0; i < forumInfo.length; i += 3) {
-        rows.push(forumInfo.slice(i, i + 3));
+    for (let i = 0; i < TrendingForums.length; i += 3) {
+        rows.push(TrendingForums.slice(i, i + 3));
     }
 
     return (

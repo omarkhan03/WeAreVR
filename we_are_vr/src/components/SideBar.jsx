@@ -11,6 +11,7 @@ import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import SearchSubcriptions from "./SearchSubcriptions";
 import { useHistory } from 'react-router-dom';
+import subscribedForums from "../Data/SubscribedForums";
 
 export default function TheSideBar() {
   const history = useHistory();
@@ -40,12 +41,12 @@ export default function TheSideBar() {
       {
         isLoggedIn ? (
           <><SearchSubcriptions barWidth="13rem" /><List>
-            {["v/BeatSaber", "v/GorillaTag", "v/Quest3", "v/Quest2"].map((text, index) => (
-              <ListItem key={text} disablePadding>
+            {subscribedForums.map((forum) => (
+              <ListItem key={forum.id} disablePadding>
                 {/* <ListItemButton onClick={() => history.push(`/Forum${text.replace('v/', '')}`)}> */}
                 <ListItemButton onClick={() => history.push(`/Forum`)}>
-                  <MyListItemIcon text={text} image="../images/vrImg.jpg" />
-                  <ListItemText primary={text} />
+                  <MyListItemIcon text={forum.name} image="../images/vrImg.jpg" />
+                  <ListItemText primary={forum.name} />
                 </ListItemButton>
               </ListItem>
             ))}

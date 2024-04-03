@@ -1,46 +1,36 @@
 import React, { useState } from 'react';
 import './profile.css';
-import SearchFunction from "../components/SearchFunction";
 import CustomAppBar from "../components/CustomAppBar";
-import SearchSubcriptions from '../components/SearchSubcriptions';
+import ProfileSearchSubscriptions from '../components/ProfileSearchSubcriptions';
+import subscribedForums from '../Data/SubscribedForums';
 
-const forums = [
-  {
-    id: 1,
-    title: "v/Gorilla Tag",
-    description: "This is a short description of Gorilla Tag. Here's another line for it.",
-    imageUrl: "../../images/profile.png", // Replace with actual image paths
-  },
-  {
-    id: 2,
-    title: "v/Quest 3",
-    description: "This is a short description of Quest 3. Here's another line for it.",
-    imageUrl: "../../images/profile.png",
-  },
-  // Add more forums as needed
-];
-
-function ForumItem({ title, description, imageUrl }) {
-  return (
-    <div className="forum-item">
-      <img src={imageUrl} alt={title} className="forum-image" />
-      <div className="forum-info">
-        <h4>{title}</h4>
-        <p style={{ color: "white" }}>{description}</p>
-      </div>
-      <button style={{ backgroundColor: "#007bff", color: "white" }} className="leave-button">Leave</button>
-    </div>
-  );
-}
 function Profile({ setPage }) {
   const [description, setDescription] = useState('This is a default description.');
   const [name, setName] = useState('Aryan');
+  const [searchedForum, setSearchedForum] = useState('');
+  const [allsubscribedForums, setAllSubscribedForums] = useState(subscribedForums);
+
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
+
+  const handleForumChange = (newForum) => {
+    setSearchedForum(newForum);
+  };
+
+  const filteredForums = allsubscribedForums.filter(forum => forum.name.toLowerCase().includes(searchedForum.toLowerCase()));
+
+  const removeSelectedForum = (id) => {
+
+    const updatedForums = allsubscribedForums.filter(forum => forum.id !== id);
+    setAllSubscribedForums(updatedForums);
+    const updatedForumsFileContent = `const allsubscribedForums = ${JSON.stringify(updatedForums, null, 4)};\nexport default subscribedForums;`;
+    console.log(updatedForumsFileContent);
+  }
+
   return (
     <>
-    <CustomAppBar />
+      <CustomAppBar />
       <div className="cover-photo">
         <button className="edit-button">Edit Cover Photo</button>
       </div>
@@ -66,11 +56,18 @@ function Profile({ setPage }) {
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
         {/* <input type="text" placeholder='Search..' className='forum-search'/> */}
-        <SearchSubcriptions barWidth="40rem;" />
+        <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />
       </div>
-      <div className="forums-list">
-        {forums.map(forum => (
-          <ForumItem key={forum.id} {...forum} />
+      <div className="forums-item">
+        {filteredForums.map(forum => (
+          <div key={forum.id} className="forum-item">
+            <img src={forum.imageUrl} alt="Forum" className="forum-image" />
+            <div className="forum-info">
+              <h4 style={{ textDecoration: 'underline' }}>{forum.name}</h4>
+              <p style={{ color: "white" }}>{forum.description}</p>
+            </div>
+            <button onClick={() => removeSelectedForum(forum.id)} className="leave-button" style={{ backgroundColor: "#007bff", color: "white" }}>Leave</button>
+          </div>
         ))}
       </div>
     </>
