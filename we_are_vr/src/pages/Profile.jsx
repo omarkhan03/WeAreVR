@@ -31,12 +31,45 @@ function ForumItem({ title, description, imageUrl }) {
     </div>
   );
 }
+
+function EditDescriptionPopup({ onSave, onCancel, description, setDescription }) {
+  return (
+    <div className="popup-background">
+      <div className="popup-container">
+        <textarea
+          className="description-edit-popup"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <div className="popup-actions">
+          <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={() => onSave(description)}>Save</button>
+          <button style={{ backgroundColor: "#0056b3", color: "white" }}onClick={onCancel}>Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Profile({ setPage }) {
   const [description, setDescription] = useState('This is a default description.');
   const [name, setName] = useState('Aryan');
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
+  const [showEditPopup, setShowEditPopup] = useState(false);
+  const [tempDescription, setTempDescription] = useState(description);
+
+  const handleEditDescription = () => {
+    setTempDescription(description); // Initialize temporary description
+    setShowEditPopup(true); // Show the popup
   };
+
+  const handleSaveDescription = (newDescription) => {
+    setDescription(newDescription); // Save the new description
+    setShowEditPopup(false); // Close the popup
+  };
+
+  const handleCancelEdit = () => {
+    setShowEditPopup(false); // Just close the popup without saving
+  };
+
   return (
     <>
     <CustomAppBar />
@@ -47,24 +80,30 @@ function Profile({ setPage }) {
         <div className="profile-picture">
           <img src="../../images/profile.png" alt="Profile" />
           <button className="edit-profile-button">Edit Profile Picture</button>
-
         </div>
-
       </div>
-      <div className="profile-name"> {/* Add this div for the name */}
-        <h2 style={{ color: "white" }}>{name}</h2> {/* Display the name */}
+      <div className="profile-name">
+        <h2 style={{ color: "white" }}>{name}</h2>
       </div>
-      <div className="description-section" >
-        <textarea
+      
+      <div className="description-section">
+      <textarea
           className="description-edit"
           value={description}
-          onChange={handleDescriptionChange}
+          
         />
-        <button className="save-description-button">Save Description</button>
+        <button onClick={handleEditDescription} className="edit-description-button">Edit Description</button>
       </div>
+      {showEditPopup && (
+        <EditDescriptionPopup
+          onSave={handleSaveDescription}
+          onCancel={handleCancelEdit}
+          description={tempDescription}
+          setDescription={setTempDescription}
+        />
+      )}
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
-        {/* <input type="text" placeholder='Search..' className='forum-search'/> */}
         <SearchFunction barWidth="20rem;" />
       </div>
       <div className="forums-list">
