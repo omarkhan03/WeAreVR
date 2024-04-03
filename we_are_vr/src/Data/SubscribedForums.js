@@ -1,10 +1,10 @@
 const subscribedForums = [
-    {
-        id: 1,
-        name: 'v/Gorilla Tag',
-        description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
-        imageUrl: '../../images/vrImg.jpg',
-    },
+    // {
+    //     id: 1,
+    //     name: 'v/Gorilla Tag',
+    //     description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.',
+    //     imageUrl: '../../images/vrImg.jpg',
+    // },
     {
         id: 2,
         name: 'v/Quest 3',
