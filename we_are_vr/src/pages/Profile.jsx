@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import './profile.css';
 import CustomAppBar from "../components/CustomAppBar";
-import ProfileSearchSubscriptions from '../components/ProfileSearchSubcriptions';
+import ProfileSearchSubscriptions from '../components/searchFunctions/ProfileSearchSubcriptions';
+import handleForumClick from '../utils/ForumNavigation';
+import { useHistory } from 'react-router-dom';
 
 function Profile({ setPage }) {
   const [description, setDescription] = useState('This is a default description.');
   const [name, setName] = useState('Aryan');
   const [searchedForum, setSearchedForum] = useState('');
   const [allsubscribedForums, setAllSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
+  const history = useHistory();
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -24,6 +27,7 @@ function Profile({ setPage }) {
     setAllSubscribedForums(newSubscribedForums);
     localStorage.setItem('SubscribedForums', JSON.stringify(newSubscribedForums));
   }
+  
 
   return (
     <>
@@ -59,7 +63,7 @@ function Profile({ setPage }) {
           <div key={forum.id} className="forum-item">
             <img src={forum.imageUrl} alt="Forum" className="forum-image" />
             <div className="forum-info">
-              <h4 style={{ textDecoration: 'underline' }}>{forum.name}</h4>
+              <h4 style={{ textDecoration: 'underline',cursor: 'pointer'}} onClick={() => handleForumClick("v/Gorilla Tag",history)}>{forum.name}</h4>
               <p style={{ color: "white" }}>{forum.description}</p>
             </div>
             <button onClick={() => removeSelectedForum(forum.id)} className="leave-button" style={{ backgroundColor: "#007bff", color: "white" }}>Leave</button>

@@ -2,24 +2,14 @@ import React, { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useHistory } from 'react-router-dom';
-import subscribedForums from '../Data/SubscribedForums';
+import allForums from '../../Data/allForums';
+import handleForumClick from '../../utils/ForumNavigation';
 
-const SearchSubcriptions = ( {barWidth} ) => {
+
+const SearchFunction = ({ barWidth }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [forums, setForums] = useState(subscribedForums);
+    const [forums, setForums] = useState(allForums); // Set initial state to allForums
     const history = useHistory();
-
-    const handleForumClick = (forumName) => {
-        const forumPaths = {
-            "v/Gorilla Tag": "/Forum",
-            "v/Quest 3": "/Home",
-            "v/Quest 2": "/Profile",
-            "v/BeatSaber": "/Forum",
-            // Add the rest of the forums and their paths here
-        };
-
-        history.push(forumPaths[forumName]);
-    };
 
     const filteredForums = forums.filter(forum => forum.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
@@ -31,14 +21,14 @@ const SearchSubcriptions = ( {barWidth} ) => {
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    label="Subscribed forums"
+                    label="Search for forums"
                     variant="outlined"
                     sx={{backgroundColor: "white", margin:"0 1rem", width:barWidth}}
                 />
             )}
             renderOption={(props, option) => {
                 return (
-                    <li {...props} onClick={() => handleForumClick(option)}>
+                    <li {...props} onClick={() => handleForumClick(option, history)}>
                         {option}
                     </li>
                 );
@@ -47,4 +37,4 @@ const SearchSubcriptions = ( {barWidth} ) => {
     );
 };
 
-export default SearchSubcriptions;
+export default SearchFunction;

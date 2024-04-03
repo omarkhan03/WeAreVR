@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import subscribedForums from '../Data/SubscribedForums';
 
 const ProfileSearchSubcriptions = ({ barWidth, onForumChange }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -38,7 +37,7 @@ const ProfileSearchSubcriptions = ({ barWidth, onForumChange }) => {
             renderOption={(props, option) => {
                 return (
                     <>
-                    <li {...props} onClick={() => handleForumClick(option)}>
+                    <li {...props} onClick={() => handleForumClick(option,history)}>
                         {option}
                     </li>
                     </>

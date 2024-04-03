@@ -9,7 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
-import SearchSubcriptions from "./SearchSubcriptions";
+import SearchSubcriptions from "./searchFunctions/SearchSubcriptions";
 import { useHistory } from 'react-router-dom';
 import subscribedForums from "../Data/SubscribedForums";
 
