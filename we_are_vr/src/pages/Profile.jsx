@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './profile.css';
 import SearchFunction from "../components/SearchFunction";
+import CustomAppBar from "../components/CustomAppBar";
 
 const forums = [
   {
@@ -71,13 +72,7 @@ function Profile({ setPage }) {
 
   return (
     <>
-      <nav className="navbar">
-        <div className="nav-item" id="home"> <button style={{ color: "white" }} onClick={() => setPage('home')}>Home</button></div>
-        <div className="nav-search">
-          {/* Search Component Placeholder */}
-        </div>
-        <div className="nav-item" id="login">Welcome Back, {name}</div>
-      </nav>
+    <CustomAppBar />
       <div className="cover-photo">
         <button className="edit-button">Edit Cover Photo</button>
       </div>
