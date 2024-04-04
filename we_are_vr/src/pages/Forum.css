@@ -233,3 +233,16 @@
   flex-direction: column;
   
 }
+
+/* .video-post div {
+  display: flex;
+  flex-direction: row;
+} */
+
+.video-post-actions {
+  margin-top: 1rem;
+}
+
+.video-post-actions * {
+  background: #2f3136;
+}
