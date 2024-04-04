@@ -1,150 +1,155 @@
 .forum-page {
+  display: grid;
+  /* grid-template-columns: 250px auto; Adjust 250px to the width of your sidebar */
+  grid-template-rows: auto 1fr; /* Header height and remaining space for the content */
+  height: 100vh;
+}
 
+.forum-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spread out elements */
+  border-bottom: 1px solid #333;
+  grid-column: 1 / -1; /* Span across both columns */
+  background-color: rgba(17, 17, 17, 0.488);
+}
 
-    display: grid;
-    /* grid-template-columns: 250px auto; Adjust 250px to the width of your sidebar */
-    grid-template-rows: auto 1fr; /* Header height and remaining space for the content */
-    height: 100vh;
-  }
-  
-  .forum-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Spread out elements */
-    border-bottom: 1px solid #333;
-    grid-column: 1 / -1; /* Span across both columns */
-    background-color: rgba(17, 17, 17, 0.488);
-  
-  }
-  
-  .forum-header > * {
-    margin: 0 10px; /* Space between elements */
-  }
-  
-  .back-button,
-  .about-button,
-  .join-button {
-    background-color: #333;
-    border: none;
-    color: #fff;
-    padding: 10px;
-    width: auto;
-    margin: 0.5rem;
-    cursor: pointer;
-  }
-  
-  /* Search input specific styles */
-  .search-input {
-    flex: 1; /* Allows the input to expand */
-    padding: 10px;
-    margin: 0 10px; /* Space on the sides */
-    background-color: #333; /* Match the button colors */
-    color: #fff;
-    border: none;
-    border-radius: 4px; /* Slight rounding of corners */
-  }
-  
-  .header-icons {
-    display: flex;
-  }
+.forum-header > * {
+  margin: 0 10px; /* Space between elements */
+}
 
-  .header-icons * {
-    width: auto;
-  }
-  
-  h2 {
-    color: #fff; /* Adjust the color to fit the dark theme */
-    margin-left: 10px; /* Spacing from the left elements */
-  }
-  
-  /* You might need to adjust the .write-message-button if it's too close to the bottom-right corner */
-  .write-message-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    border-radius: 50%; /* Circle shape */
-    width: 50px; /* Fixed width */
-    height: 50px; /* Fixed height */
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .search-input {
-    flex-grow: 1;
-    padding: 10px;
-    margin-right: 10px; /* Spacing after the search bar */
-  }
-  
-  .sidebar {
-    width: 200px; /* Fixed sidebar width */
-    padding: 20px;
-    border-right: 1px solid #333; /* Assuming there's a slight border from the screenshot */
-    overflow-y: auto; /* Adds scroll to each section if content is longer than the screen */
-  }
-  
-  .sidebar-item {
-    padding: 10px;
-    margin-bottom: 10px; /* Spacing between sidebar items */
-    cursor: pointer;
-  }
-  
-  .sidebar-item.active {
-    font-weight: bold;
-  }
-  
-  .forum-main {
-    /* grid-column: 2; Start from the 2nd column, after the sidebar */
-    display: flex;
-    flex-direction: column;
-    /* height: calc(100vh - 60px); Height adjusted for the header 
+.back-button,
+.about-button,
+.join-button {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  width: 5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.green-button {
+  background-color: green;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  width: 5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+/* Search input specific styles */
+.search-input {
+  flex: 1; /* Allows the input to expand */
+  padding: 10px;
+  margin: 0 10px; /* Space on the sides */
+  background-color: #333; /* Match the button colors */
+  color: #fff;
+  border: none;
+  border-radius: 4px; /* Slight rounding of corners */
+}
+
+.header-icons {
+  display: flex;
+}
+
+.header-icons * {
+  width: auto;
+}
+
+h2 {
+  color: #fff; /* Adjust the color to fit the dark theme */
+  margin-left: 10px; /* Spacing from the left elements */
+}
+
+/* You might need to adjust the .write-message-button if it's too close to the bottom-right corner */
+.write-message-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%; /* Circle shape */
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 10px; /* Spacing after the search bar */
+}
+
+.sidebar {
+  width: 200px; /* Fixed sidebar width */
+  padding: 20px;
+  border-right: 1px solid #333; /* Assuming there's a slight border from the screenshot */
+  overflow-y: auto; /* Adds scroll to each section if content is longer than the screen */
+}
+
+.sidebar-item {
+  padding: 10px;
+  margin-bottom: 10px; /* Spacing between sidebar items */
+  cursor: pointer;
+}
+
+.sidebar-item.active {
+  font-weight: bold;
+}
+
+.forum-main {
+  /* grid-column: 2; Start from the 2nd column, after the sidebar */
+  display: flex;
+  flex-direction: column;
+  /* height: calc(100vh - 60px); Height adjusted for the header 
     */
-  }
-  
-  .forum-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 30px; /* More space below the title */
-  }
-  
-  .forum-post,
-  .forum-video,
-  .new-post-notification {
-    border: 1px solid #333; /* Assuming there's a slight border from the screenshot */
-    margin-bottom: 20px; /* Spacing between posts */
-    padding: 20px;
-    border-radius: 10px; /* Assuming there's a rounded corner from the screenshot */
-  }
-  
-  .forum-post {
-    display: flex;
-    justify-content: space-between; /* Align user/date to the left and message to the right */
-  }
-  
-  .write-message {
-    position: fixed; /* Fixed position for the write message button */
-    bottom: 20px;
-    right: 20px;
-  }
+}
 
+.forum-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px; /* More space below the title */
+}
 
-  header div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
+.forum-post,
+.forum-video,
+.new-post-notification {
+  border: 1px solid #333; /* Assuming there's a slight border from the screenshot */
+  margin-bottom: 20px; /* Spacing between posts */
+  padding: 20px;
+  border-radius: 10px; /* Assuming there's a rounded corner from the screenshot */
+}
 
-  header div img {
-    width: 3rem;
-    height: 3rem;
-    /* round */
-    border-radius: 100%;
-  }
+.forum-post {
+  display: flex;
+  justify-content: space-between; /* Align user/date to the left and message to the right */
+}
 
-  /* ... Your existing styles ... */
+.write-message {
+  position: fixed; /* Fixed position for the write message button */
+  bottom: 20px;
+  right: 20px;
+}
+
+header div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+header div img {
+  width: 3rem;
+  height: 3rem;
+  /* round */
+  border-radius: 100%;
+}
+
+/* ... Your existing styles ... */
 
 .forum-main {
   display: flex;
@@ -217,7 +222,7 @@
 }
 
 .message div div {
-  display:flex;
+  display: flex;
   gap: 2rem;
   text-align: left;
 }
@@ -231,6 +236,7 @@
 .video-post {
   display: flex;
   flex-direction: column;
+
   
 }
 
@@ -246,3 +252,4 @@
 .video-post-actions * {
   background: #2f3136;
 }
+
