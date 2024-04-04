@@ -9,49 +9,62 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
-import SearchFunction from "./SearchFunction";
+import SearchSubcriptions from "./SearchSubcriptions";
+import { useHistory } from 'react-router-dom';
 
-export default function TheSideBar( {showSearch}) {
+export default function TheSideBar() {
+  const history = useHistory();
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
-    //New component named MyListItemIcon that takes two props: text and image
-    //Inside the component, we render an img tag with the provided image path, alt text, and size.
-const MyListItemIcon = ({ text, image }) => (
-        <ListItemIcon>
-            <img src={image} alt={text} width="24" height="24" />
-        </ListItemIcon>
-    );
 
-MyListItemIcon.propTypes = {
+  //New component named MyListItemIcon that takes two props: text and image
+  //Inside the component, we render an img tag with the provided image path, alt text, and size.
+  const MyListItemIcon = ({ text, image }) => (
+    <ListItemIcon>
+      <img src={image} alt={text} width="24" height="24" />
+    </ListItemIcon>
+  );
+
+  MyListItemIcon.propTypes = {
     text: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-};
+  };
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation">
-        <Typography variant="h5" margin={"1rem 0" }>
-            Subscribed Forums
-        </Typography>
-        <Divider variant="middle" />
-        {/* <input type="search" placeholder="Search forums" /> */}
-        
-
-        {showSearch ? <SearchFunction barWidth="13rem"/> : null}
-      <List>
-        {["v/BeatSaber", "v/GorillaTag", "v/Quest3", "v/Quest2"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-            <ListItemButton onClick={() => navigate('/forum')}>
-                <MyListItemIcon text={text} image="../images/vrImg.jpg" />
-                <ListItemText primary={text} />
-            </ListItemButton>
-            </ListItem>
-        ))}
-      </List>
-    </Box>
+    <Box sx={{
+      width: 250,
+    }} role="presentation">
+      <Typography variant="h5" margin={"1rem 0"}>
+        Subscribed Forums
+      </Typography>
+      <Divider variant="middle" />
+      {
+        isLoggedIn ? (
+          <><SearchSubcriptions barWidth="13rem" /><List>
+            {["v/BeatSaber", "v/GorillaTag", "v/Quest3", "v/Quest2"].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                {/* <ListItemButton onClick={() => history.push(`/Forum${text.replace('v/', '')}`)}> */}
+                <ListItemButton onClick={() => history.push(`/Forum`)}>
+                  <MyListItemIcon text={text} image="../images/vrImg.jpg" />
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List></>
+        ) : ( //else user is not logged in so show login button
+          <Typography variant="h6"><a style={{text_Decoration: 'none', color: 'red', textDecoration: 'underline'}} href="/login" >Login</a> to view your Subscribed Forums</Typography>
+  )
+}
+    </Box >
   );
-  return (
-    <div style={{ width: 250 }}>
-    <Drawer variant="permanent" open anchor="left">
+return (
+  <div style={{ width: 250 }}>
+    <Drawer variant="permanent" open anchor="left"
+      PaperProps={{
+        sx: { backgroundColor: 'grey' }
+      }}
+    >
       {DrawerList}
     </Drawer>
-    </div>
-  );
+  </div>
+);
 }

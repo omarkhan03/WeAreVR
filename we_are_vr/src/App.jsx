@@ -5,31 +5,23 @@ import Forum from './pages/Forum';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import VisitProfile from './pages/VisitProfile';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
-  const [page, setPage] = useState('home');
-
-  const renderPage = () => {
-    switch (page) {
-      case 'home':
-        return <Home setPage={setPage} />;
-      case 'forum':
-        return <Forum setPage={setPage} />;
-      case 'profile':
-        return <Profile setPage={setPage} />;
-      case 'login':
-        return <Login setPage={setPage} />;
-      case 'VisitProfile':
-        return <VisitProfile setPage={setPage} />;
-      default:
-        return <Home setPage={setPage} />;
-    }
-  };
+  const [isLoggedIn, setLoggedIn] = useState(false); // This is a placeholder for the login state
+  //Using react router, the parent component(App.jsx) can passdown the state to the child components
 
   return (
-    <div className="App">
-      {renderPage()}
-    </div>
+    <Router>
+      <div> 
+        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/Home" render={() => <Home/>} />
+        <Route exact path="/Forum" render={() => <Forum />} />
+        <Route exact path="/Profile" render={() => <Profile />} />
+        <Route exact path="/Login" render={() => <Login setLoggedIn={setLoggedIn} />} />
+        <Route exact path="/VisitProfile" render={() => <VisitProfile />} />
+      </div>
+    </Router>
   );
 }
 

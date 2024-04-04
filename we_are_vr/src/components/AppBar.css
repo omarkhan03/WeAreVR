@@ -1,0 +1,13 @@
+.iconEffect {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.iconEffect:hover {
+  color: grey;
+}
+
+#PersonIcon:hover {
+  cursor: pointer;
+}

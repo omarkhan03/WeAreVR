@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import CustomAppBar from "../components/CustomAppBar";
 import WelcomeMessage from "../components/WelcomeMessage";
@@ -6,7 +6,14 @@ import { Box } from "@mui/material";
 import TrendingComponent from "../components/TrendingComponent";
 import SideBar from "../components/SideBar";
 
-function Home({ setPage }) {
+function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(savedIsLoggedIn === 'true');
+  }, []);
+
   return (
     <div>
       <Box
@@ -16,15 +23,10 @@ function Home({ setPage }) {
           background: "inherit",
         }}
       >
-        <SideBar showSearch={0}/>
+        <SideBar/>
         <div>
-      <button style={{color:'white'}} onClick={() => setPage('forum')}>Go to Forum</button>
-      <button style={{color:'white'}} onClick={() => setPage('profile')}>Go to Profile</button>
-      <button style={{color:'white'}} onClick={() => setPage('login')}>Go to Login</button>
-      <button style={{color:'white'}} onClick={() => setPage('VisitProfile')}>Go to VisitProfile</button>
-
           <CustomAppBar />
-          <WelcomeMessage isLoggedIn={true} name={"Aryan"} />
+          <WelcomeMessage isLoggedIn={isLoggedIn} name={"Aryan"} />
           <Box
             // height={200}
             my={4}
