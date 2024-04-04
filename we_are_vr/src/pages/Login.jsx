@@ -62,6 +62,7 @@ function Login({ setLoggedIn }) {
         </div>
 
         <div className="form-footer">
+  {/* <button className='submit-button' type="submit">Login</button> */}
   <span className="forgot-password" onClick={handleForgotPassword}>Forgot Password?</span>
 </div>
 
