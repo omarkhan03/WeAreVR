@@ -55,32 +55,73 @@ function Profile({ setPage }) {
   const [name, setName] = useState('Aryan');
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [tempDescription, setTempDescription] = useState(description);
+  const [profilePic, setProfilePic] = useState('../../images/profile.png'); // Default profile picture
+  const [coverPhoto, setCoverPhoto] = useState('../../images/cover-default.jpg'); // Default cover photo
+  const fileInputRef = React.createRef(); // Ref for profile picture file input
+  const coverPhotoInputRef = React.createRef(); // Ref for cover photo file input
 
+  // Handlers for profile picture remain unchanged
+  
+  const handleCoverPhotoChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setCoverPhoto(URL.createObjectURL(file)); // Update cover photo with the selected file
+    }
+  };
+
+  const triggerCoverPhotoInput = () => {
+    coverPhotoInputRef.current.click(); // Programmatically click the hidden file input for cover photo
+  };
   const handleEditDescription = () => {
-    setTempDescription(description); // Initialize temporary description
-    setShowEditPopup(true); // Show the popup
+    setTempDescription(description);
+    setShowEditPopup(true);
   };
 
   const handleSaveDescription = (newDescription) => {
-    setDescription(newDescription); // Save the new description
-    setShowEditPopup(false); // Close the popup
+    setDescription(newDescription);
+    setShowEditPopup(false);
   };
 
   const handleCancelEdit = () => {
-    setShowEditPopup(false); // Just close the popup without saving
+    setShowEditPopup(false);
   };
 
+  const handleProfilePicChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setProfilePic(URL.createObjectURL(file)); // Create a URL for the selected file and update the state
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current.click(); // Programmatically click the hidden file input
+  };
   return (
     <>
     <CustomAppBar />
-      <div className="cover-photo">
-        <button className="edit-button">Edit Cover Photo</button>
+     <div className="cover-photo">
+       
+        <button className="edit-button" onClick={triggerCoverPhotoInput}>Edit Cover Photo</button>
       </div>
+      <input
+        type="file"
+        ref={coverPhotoInputRef}
+        style={{ display: 'none' }} // Hide the file input
+        onChange={handleCoverPhotoChange}
+        accept="image/*" // Accept images only
+      />
       <div className="profile-section">
-        <div className="profile-picture">
-          <img src="../../images/profile.png" alt="Profile" />
-          <button className="edit-profile-button">Edit Profile Picture</button>
-        </div>
+              <div className="profile-picture">
+        <img src={profilePic} alt="Profile" />
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }} // Hide the file input
+          onChange={handleProfilePicChange}
+          accept="image/*" // Accept images only
+        />
+        <button className="edit-profile-button" onClick={triggerFileInput}>Edit Profile Picture</button>
+      </div>
       </div>
       <div className="profile-name">
         <h2 style={{ color: "white" }}>{name}</h2>
