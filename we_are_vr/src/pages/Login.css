@@ -57,7 +57,7 @@
 
 .forgot-password {
   display: block; /* Ensures it takes its own line */
-  color: blue;
+  color: red;
   cursor: pointer;
   text-decoration: underline;
   text-align: center; /* Centers the text if that's what you're going for */

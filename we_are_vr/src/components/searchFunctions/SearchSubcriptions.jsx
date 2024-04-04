@@ -22,7 +22,7 @@ const SearchSubcriptions = ( {barWidth} ) => {
                     {...params}
                     label="Subscribed forums"
                     variant="outlined"
-                    sx={{backgroundColor: "white", margin:"0 1rem", width:barWidth}}
+                    sx={{backgroundColor: "lightgrey", margin:"0 1rem", width:barWidth}}
                 />
             )}
             renderOption={(props, option) => {
