@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css'; // Make sure the CSS file is in the same directory and named 'Login.css'
 import { useHistory } from 'react-router-dom';
-
+import subscribedForums from '../Data/SubscribedForums';
 
 function Login({ setLoggedIn }) {
   const [username, setUsername] = useState('');
@@ -19,7 +19,9 @@ function Login({ setLoggedIn }) {
       // Redirect to the home page
       setLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
-
+      localStorage.setItem('SubscribedForums', JSON.stringify(subscribedForums));
+      console.log('logged in');
+      console.log(localStorage.getItem('SubscribedForums'));
       history.push('/Home');
 
       console.log('Login Submitted', { username, password });

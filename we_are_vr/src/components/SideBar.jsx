@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -9,19 +9,20 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
-import SearchSubcriptions from "./SearchSubcriptions";
+import SearchSubcriptions from "./searchFunctions/SearchSubcriptions";
 import { useHistory } from 'react-router-dom';
 
 export default function TheSideBar() {
   const history = useHistory();
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const [getSubscribedForums, setGetSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
 
 
   //New component named MyListItemIcon that takes two props: text and image
   //Inside the component, we render an img tag with the provided image path, alt text, and size.
   const MyListItemIcon = ({ text, image }) => (
     <ListItemIcon>
-      <img src={image} alt={text} width="24" height="24" />
+      <img src={image} alt={text} width="30" height="30" />
     </ListItemIcon>
   );
 
@@ -40,31 +41,32 @@ export default function TheSideBar() {
       {
         isLoggedIn ? (
           <><SearchSubcriptions barWidth="13rem" /><List>
-            {["v/BeatSaber", "v/GorillaTag", "v/Quest3", "v/Quest2"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                {/* <ListItemButton onClick={() => history.push(`/Forum${text.replace('v/', '')}`)}> */}
+            {getSubscribedForums.map((forum) => (
+              <ListItem key={forum.id} disablePadding>
                 <ListItemButton onClick={() => history.push(`/Forum`)}>
-                  <MyListItemIcon text={text} image="../images/vrImg.jpg" />
-                  <ListItemText primary={text} />
+                  <MyListItemIcon text={forum.name} image={forum.imageUrl} />
+                  <ListItemText >
+                    <Typography sx={{fontSize:'1.3rem'}}>{forum.name}</Typography>
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
             ))}
           </List></>
         ) : ( //else user is not logged in so show login button
-          <Typography variant="h6"><a style={{text_Decoration: 'none', color: 'red', textDecoration: 'underline'}} href="/login" >Login</a> to view your Subscribed Forums</Typography>
-  )
-}
+          <Typography variant="h6"><a style={{ text_Decoration: 'none', color: 'red', textDecoration: 'underline' }} href="/login" >Login</a> to view your Subscribed Forums</Typography>
+        )
+      }
     </Box >
   );
-return (
-  <div style={{ width: 250 }}>
-    <Drawer variant="permanent" open anchor="left"
-      PaperProps={{
-        sx: { backgroundColor: 'grey' }
-      }}
-    >
-      {DrawerList}
-    </Drawer>
-  </div>
-);
+  return (
+    <div style={{ width: 250 }}>
+      <Drawer variant="permanent" open anchor="left"
+        PaperProps={{
+          sx: { backgroundColor: 'grey' }
+        }}
+      >
+        {DrawerList}
+      </Drawer>
+    </div>
+  );
 }

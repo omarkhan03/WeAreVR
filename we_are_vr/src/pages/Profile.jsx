@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
 import './profile.css';
-import SearchFunction from "../components/SearchFunction";
 import CustomAppBar from "../components/CustomAppBar";
-
-const forums = [
-  {
-    id: 1,
-    title: "v/Gorilla Tag",
-    description: "This is a short description of Gorilla Tag. Here's another line for it.",
-    imageUrl: "../../images/profile.png", // Replace with actual image paths
-  },
-  {
-    id: 2,
-    title: "v/Quest 3",
-    description: "This is a short description of Quest 3. Here's another line for it.",
-    imageUrl: "../../images/profile.png",
-  },
-  // Add more forums as needed
-];
+import ProfileSearchSubscriptions from '../components/searchFunctions/ProfileSearchSubcriptions';
+import handleForumClick from '../utils/ForumNavigation';
+import { useHistory } from 'react-router-dom';
 
 function ForumItem({ title, description, imageUrl }) {
   return (
@@ -53,6 +39,9 @@ function EditDescriptionPopup({ onSave, onCancel, description, setDescription })
 function Profile({ setPage }) {
   const [description, setDescription] = useState('This is a default description.');
   const [name, setName] = useState('Aryan');
+  const [searchedForum, setSearchedForum] = useState('');
+  const [allsubscribedForums, setAllSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
+  const history = useHistory();
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [tempDescription, setTempDescription] = useState(description);
   const [profilePic, setProfilePic] = useState('../../images/profile.png'); // Default profile picture
@@ -96,6 +85,20 @@ function Profile({ setPage }) {
   const triggerFileInput = () => {
     fileInputRef.current.click(); // Programmatically click the hidden file input
   };
+
+  const handleForumChange = (newForum) => {
+    setSearchedForum(newForum);
+  };
+
+  const filteredForums = allsubscribedForums.filter(forum => forum.name.toLowerCase().includes(searchedForum.toLowerCase()));
+
+  const removeSelectedForum = (id) => {
+    const newSubscribedForums = allsubscribedForums.filter(forum => forum.id !== id);
+    setAllSubscribedForums(newSubscribedForums);
+    localStorage.setItem('SubscribedForums', JSON.stringify(newSubscribedForums));
+  }
+  
+
   return (
     <>
     <CustomAppBar />
@@ -145,11 +148,18 @@ function Profile({ setPage }) {
       )}
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
-        <SearchFunction barWidth="20rem;" />
+        <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />
       </div>
-      <div className="forums-list">
-        {forums.map(forum => (
-          <ForumItem key={forum.id} {...forum} />
+      <div className="forums-item">
+        {filteredForums.map(forum => (
+          <div key={forum.id} className="forum-item">
+            <img src={forum.imageUrl} alt="Forum" className="forum-image" />
+            <div className="forum-info">
+              <h4 style={{ textDecoration: 'underline',cursor: 'pointer'}} onClick={() => handleForumClick("v/Gorilla Tag",history)}>{forum.name}</h4>
+              <p style={{ color: "white" }}>{forum.description}</p>
+            </div>
+            <button onClick={() => removeSelectedForum(forum.id)} className="leave-button" style={{ backgroundColor: "#007bff", color: "white" }}>Leave</button>
+          </div>
         ))}
       </div>
     </>

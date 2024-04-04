@@ -2,14 +2,14 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import SearchFunction from './SearchFunction';
+import SearchFunction from './searchFunctions/SearchFunction';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import './AppBar.css';
 import React from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-
+import subscribedForums from '../Data/SubscribedForums';
 
 export default function ButtonAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,6 +32,7 @@ export default function ButtonAppBar() {
 
   const navigateToLogin = () => {
     localStorage.removeItem('isLoggedIn'); // Remove the login state
+
     history.push('/Login');
     handleMenuClose();
   };
