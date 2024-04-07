@@ -148,7 +148,7 @@ function Profile({ setPage }) {
       )}
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
-        <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />
+        {!showEditPopup && <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />}
       </div>
       <div className="forums-item">
         {filteredForums.map(forum => (
