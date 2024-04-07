@@ -3,10 +3,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useHistory } from 'react-router-dom';
 import handleForumClick from '../../utils/ForumNavigation';
-
+import subscribedForums from "../../Data/SubscribedForums"
 const SearchSubcriptions = ( {barWidth} ) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
+    const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')) || subscribedForums);
 
     const history = useHistory();
 

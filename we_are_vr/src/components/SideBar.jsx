@@ -11,11 +11,11 @@ import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import SearchSubcriptions from "./searchFunctions/SearchSubcriptions";
 import { useHistory } from 'react-router-dom';
-
+import subscribedForums from "../Data/SubscribedForums"
 export default function TheSideBar() {
   const history = useHistory();
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  const [getSubscribedForums, setGetSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
+  const [getSubscribedForums, setGetSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')) || subscribedForums);
 
 
   //New component named MyListItemIcon that takes two props: text and image

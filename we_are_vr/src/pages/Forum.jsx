@@ -5,10 +5,10 @@ import SideBar from "../components/SideBar";
 import ButtonAppBar from '../components/CustomAppBar';
 import { color } from '@mui/system';
 import allForums from '../Data/allForums';
-
+import subscribedForums from "../Data/SubscribedForums"
 const ForumPage = () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
+  const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')) || subscribedForums);
   const [forumId, setForumId] = useState(1);
   
   // Function to check if the forum is joined by the user
