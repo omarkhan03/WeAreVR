@@ -6,11 +6,15 @@ import ButtonAppBar from '../components/CustomAppBar';
 import { color } from '@mui/system';
 import allForums from '../Data/allForums';
 import subscribedForums from "../Data/SubscribedForums"
+import { useHistory } from 'react-router-dom';
+
+
 const ForumPage = () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')) || subscribedForums);
   const [forumId, setForumId] = useState(1);
-  
+  const history = useHistory();
+
   // Function to check if the forum is joined by the user
   const isForumJoined = () => {
     if (isLoggedIn) {
@@ -35,6 +39,16 @@ const ForumPage = () => {
       }
     }
   };
+  const goToOtherProfile = (id) => {
+    console.log("Navigating to profile with id: ", id);
+    if (id === 10) {
+      history.push('/visitProfile');
+    }
+    else{
+      history.push('/visitProfile2');
+    }
+    // history.push('/visitProfile');
+  }
   return (
     <div>
       <Box
@@ -73,10 +87,10 @@ const ForumPage = () => {
             <div className="messages-container">
 
               <div className="message">
-                <img src="../../images/gorilla2.jpeg" alt="" />
+                <img src="../../images/gorilla2.jpeg" alt="" onClick= {() => goToOtherProfile(10)}/>
                 <div>
                   <div>
-                    <div className="message-user">GorillaBoy</div>
+                    <div className="message-user"onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
                     <div className="date">Mar 6 3:02am</div>
                   </div>
                   <div className="message-text">Hey do you wanna see some awesome clips I recorded yesterday?</div>
@@ -84,10 +98,10 @@ const ForumPage = () => {
               </div>
 
               <div className="message">
-                <img src="../../images/gorilla3.webp" alt="" />
+                <img src="../../images/gorilla3.webp" alt="" onClick= {() => goToOtherProfile(11)}/>
                 <div>
                   <div>
-                    <div className="message-user">Monkey3</div>
+                    <div className="message-user"onClick= {() => goToOtherProfile(11)}>Monkey3</div>
                     <div className="date">Mar 6 3:02am</div>
                   </div>
                   <div className="message-text">Sure lets see them.</div>
@@ -96,10 +110,10 @@ const ForumPage = () => {
 
 
               <div className="message">
-                <img src="../../images/gorilla2.jpeg" alt="" />
+                <img src="../../images/gorilla2.jpeg" alt=""onClick= {() => goToOtherProfile(10)} />
                 <div>
                   <div>
-                    <div className="message-user">GorillaBoy</div>
+                    <div className="message-user" onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
                     <div className="date">Mar 6 3:02am</div>
                   </div>
                   <div className="message-text">Aight here it is! Enjoy</div>
@@ -107,10 +121,10 @@ const ForumPage = () => {
               </div>
 
               <div className="message">
-                <img src="../../images/gorilla2.jpeg" alt="" />
+                <img src="../../images/gorilla2.jpeg" alt="" onClick= {() => goToOtherProfile(10)}/>
                 <div>
                   <div>
-                    <div className="message-user">GorillaBoy</div>
+                    <div className="message-user" onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
                     <div className="date">Mar 6 3:02am</div>
                   </div>
                   <div className='video-post'>

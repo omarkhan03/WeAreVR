@@ -181,6 +181,7 @@ header div img {
 .message-user {
   font-weight: bold;
   margin-right: 6px;
+  cursor: pointer;
 }
 
 .message-text {
@@ -236,8 +237,6 @@ header div img {
 .video-post {
   display: flex;
   flex-direction: column;
-
-  
 }
 
 /* .video-post div {
@@ -253,3 +252,6 @@ header div img {
   background: #2f3136;
 }
 
+img {
+  cursor: pointer;
+}

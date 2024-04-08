@@ -8,7 +8,7 @@ function SecondProfile({ setPage }) {
       <div className="VisitProfile-cover-photo"></div>
       <div className="profile-section">
         <div className="profile-picture">
-          <img src="../../images/steve.png" alt="Profile" />
+          <img src="../../images/gorilla3.webp" alt="Profile" />
         </div>
       </div>
       <div className="profile-name">
