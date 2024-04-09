@@ -245,19 +245,6 @@ const Quest3Page = () => {
                 </div>
               ))}
             </div>
-
-            {/* <div className="message">
-              <img src="/gorilla2.jpeg" alt=""onClick= {() => goToOtherProfile(10)} />
-              <div>
-                <div>
-                  <div className="message-user" onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
-                  <div className="date">Mar 6 3:02am</div>
-
-                </div>
-              </div>
-            </div> */}
-
-
             <input
               type="file"
               id="hiddenFileInput"
