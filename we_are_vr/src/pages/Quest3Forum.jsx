@@ -6,6 +6,7 @@ import ButtonAppBar from '../components/CustomAppBar';
 import { color } from '@mui/system';
 import allForums from '../Data/allForums';
 import { useHistory } from 'react-router-dom';
+import forbiddenWords from '../Data/ModerationPolicy';
 
 const Quest3Page = () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -125,7 +126,19 @@ const Quest3Page = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-
+  
+    // Convert the message input to lowercase
+    const lowercaseInput = inputValue.toLowerCase();
+    
+    // Check if the lowercase message contains any of the lowercase forbidden words
+    const containsForbiddenWord = forbiddenWords.some(word => lowercaseInput.includes(word));
+  
+    if (containsForbiddenWord) {
+      alert('Your message contains forbidden words. Please revise it.');
+      return;
+    }
+  
+    // If no forbidden words are found, proceed to add the message
     const newMessage = {
       id: messages.length + 1,
       user: "Aryan",
@@ -133,7 +146,7 @@ const Quest3Page = () => {
       text: inputValue,
       imgSrc: "/profile.png",
     };
-
+  
     setMessages([...messages, newMessage]);
     setInputValue('');
   };
