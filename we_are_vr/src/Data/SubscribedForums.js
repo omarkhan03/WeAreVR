@@ -21,7 +21,7 @@ const subscribedForums = [
         id: 4,
         name: 'v/BeatSaber',
         description: 'Beat Saber is a popular VR rhythm game that combines lightsabers and music. Join the community to share your high scores, mods, and custom songs!',
-        imageUrl: '/beatSaber.PNG',
+        imageUrl: '/beatSaber.png',
     },
 ];
 export default subscribedForums;
