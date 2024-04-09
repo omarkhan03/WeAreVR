@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import VisitProfile from './pages/VisitProfile';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import SecondProfile from './pages/SecondProfile';
+import Quest3Forum from './pages/Quest3Forum';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false); // This is a placeholder for the login state
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/Login" render={() => <Login setLoggedIn={setLoggedIn} />} />
         <Route exact path="/VisitProfile" render={() => <VisitProfile />} />
         <Route exact path="/VisitProfile2" render={() =><SecondProfile /> }/>
+        <Route exact path="/Quest3Forum" render={() => <Quest3Forum />} />
       </div>
     </Router>
 

@@ -10,7 +10,6 @@ const ProfileSearchSubcriptions = ({ barWidth, onForumChange }) => {
         setSearchTerm(forumName);
         onForumChange(forumName);
         setForums(JSON.parse(localStorage.getItem('SubscribedForums')));
-        
       };
 
     

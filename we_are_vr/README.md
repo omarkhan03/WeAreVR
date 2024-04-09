@@ -23,6 +23,9 @@ To login, click the profile icon, then click the login dropdown. Enter the follo
 - password: `123`
 # Clickable Forums
 As part of the requirements for this project, not all the Forums have a unique page to visit. Only the Gorilla Tag and Quest 3 Forums have unique pages. The rest of the forums are just placeholders and will navigate to the Gorilla Tag page.
+
+# Clickable Users
+As part of the requirements for this project, not all the users have a unique page to visit. Only the Monkey3 and GorillaBoy users have unique pages. The remaining users are just placeholders and will navigate to the Home page.
 # Features
 ## Home page
 - Search for a forum (keep in mind that only the Gorilla Tag and Quest 3 forums have unique pages and the rest will navigate to the Gorilla Tag page)
