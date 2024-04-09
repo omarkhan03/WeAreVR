@@ -173,7 +173,7 @@ const ForumPage = () => {
             </div>
 
             <div className="header-icons">
-            <button className="about-button">About</button>
+            <button className="about-button" onClick={toggleAboutPopup}>About</button>
             {isLoggedIn ? (
               isForumJoined() ? (
                 <button className="green-button" onClick={toggleJoined}>Joined</button>
