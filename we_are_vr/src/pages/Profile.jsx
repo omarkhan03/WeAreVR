@@ -37,7 +37,7 @@ function EditDescriptionPopup({ onSave, onCancel, description, setDescription })
 }
 
 function Profile({ setPage }) {
-  const [description, setDescription] = useState('This is a default description.');
+  const [description, setDescription] = useState('Hi Im Aryan, Welcome to my profile! I am interested in VR and AR technologies. I love playing VR games and I staying updated with the latest VR news. Feel free to follow me on youtube! www.youtube.com');
   const [name, setName] = useState('Aryan');
   const [searchedForum, setSearchedForum] = useState('');
   const [allsubscribedForums, setAllSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
@@ -134,7 +134,6 @@ function Profile({ setPage }) {
       <textarea
           className="description-edit"
           value={description}
-          
         />
         <button onClick={handleEditDescription} className="edit-description-button">Edit Description</button>
       </div>
