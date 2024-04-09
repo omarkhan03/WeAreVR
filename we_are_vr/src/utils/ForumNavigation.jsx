@@ -1,8 +1,8 @@
 const handleForumClick = (forumName, history) => {
     const forumPaths = {
         "v/Gorilla Tag": "/Forum",
-        "v/Quest 3": "/Home",
-        "v/Quest 2": "/Profile",
+        "v/Quest 3": "/Quest3Forum",
+        "v/Quest 2": "/Forum",
         "v/GTA VI": "/Forum",
         "v/GTA V": "/Forum",
         "v/Spiderman": "/Forum",

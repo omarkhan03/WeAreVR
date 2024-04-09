@@ -12,6 +12,9 @@ import PropTypes from "prop-types";
 import SearchSubcriptions from "./searchFunctions/SearchSubcriptions";
 import { useHistory } from 'react-router-dom';
 import subscribedForums from "../Data/SubscribedForums"
+import handleForumClick from '../utils/ForumNavigation';
+
+
 export default function TheSideBar() {
   const history = useHistory();
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -43,7 +46,7 @@ export default function TheSideBar() {
           <><SearchSubcriptions barWidth="13rem" /><List>
             {getSubscribedForums.map((forum) => (
               <ListItem key={forum.id} disablePadding>
-                <ListItemButton onClick={() => history.push(`/Forum`)}>
+                  <ListItemButton onClick={() => handleForumClick(forum.name, history)}>
                   <MyListItemIcon text={forum.name} image={forum.imageUrl} />
                   <ListItemText >
                     <Typography sx={{fontSize:'1.3rem'}}>{forum.name}</Typography>

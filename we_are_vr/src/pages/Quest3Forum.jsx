@@ -7,10 +7,10 @@ import { color } from '@mui/system';
 import allForums from '../Data/allForums';
 import { useHistory } from 'react-router-dom';
 
-const ForumPage = () => {
+const Quest3Page = () => {
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const [forums, setForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
-  const [forumId, setForumId] = useState(1);
+  const [forumId, setForumId] = useState(2);
   const history = useHistory();
 
   const goToOtherProfile = (path) => {
@@ -55,34 +55,50 @@ const ForumPage = () => {
       id: 1,
       user: "GorillaBoy",
       profileURL: "/visitProfile",
-      date: "Mar 6 3:02am",
-      text: "Hey do you wanna see some awesome clips I recorded yesterday?",
+      date: "April 1 4:02am",
+      text: "Did anyone see the review? It's amazing! ",
       imgSrc: "/gorilla2.jpeg",
     },
     {
       id: 2,
-      user: "Monkey3",
-      profileURL: "/VisitProfile2",
-      date: "Mar 6 3:02am",
-      text: "Sure lets see them.",
-      imgSrc: "/gorilla3.webp",
+      user: "LebronJamesIsTheGoat",
+      profileURL: "",
+      date: "April 4:50am",
+      text: "Bro its 4am, go and sleep!",
+      imgSrc: "/steve.png",
     },
     {
       id: 3,
       user: "GorillaBoy",
       profileURL: "/visitProfile",
-      date: "Mar 6 3:02am",
-      text: "Aight here it is! Enjoy",
+      date: "April 1 7:02am",
+      text: "Don't tell me what to do. And I did go to sleep, I woke up at 3am!",
       imgSrc: "/gorilla2.jpeg",
     },
     {
       id: 4,
+      user: "Monkey3",
+      profileURL: "/VisitProfile2",
+      date: "April 11:50am",
+      text: "Upload the video dude, its been hours",
+      imgSrc: "/gorilla3.webp",
+    },
+    {
+      id: 5,
       user: "GorillaBoy",
       profileURL: "/visitProfile",
-      date: "Mar 6 3:15am",
-      text: `<iframe src="https://www.youtube.com/embed/4aLNmN1DVts" frameborder="0" allowfullscreen></iframe>`,
+      date: "April 1 2:07pm",
+      text: `<iframe src="https://www.youtube.com/embed/iM7aUi0Tork" frameborder="0" allowfullscreen></iframe>`,
       imgSrc: "/gorilla2.jpeg",
-      likes: 3, // like count state for video post
+      likes: 7, // like count state for video post
+    },
+    {
+      id: 6,
+      user: "Monkey3",
+      profileURL: "/VisitProfile2",
+      date: "April 2:30pm",
+      text: "Great video, thanks for sharing!",
+      imgSrc: "/gorilla3.webp",
     },
   ]);
 
@@ -163,11 +179,7 @@ const ForumPage = () => {
   };
 
   return (
-
-
     <div>
-
-
       <Box
         sx={{
           display: "grid",
@@ -185,8 +197,8 @@ const ForumPage = () => {
             <p style={{ color: "black" }}>.</p>
 
             <div>
-              <img src="/gorilla.jpeg" alt="" />
-              <h2>Gorilla Tag</h2>
+              <img src="/quest3.png" alt="" />
+              <h2>Quest 3</h2>
             </div>
 
             <div className="header-icons">
@@ -233,7 +245,6 @@ const ForumPage = () => {
                 </div>
               ))}
             </div>
-
             <input
               type="file"
               id="hiddenFileInput"
@@ -257,7 +268,6 @@ const ForumPage = () => {
                 </div>
               ) : (
                 <p>Please <a style={{ text_Decoration: 'none', color: 'red', textDecoration: 'underline' }} href="/login" >Login</a> to send messages.</p>
-
               )
             }
 
@@ -270,7 +280,7 @@ const ForumPage = () => {
   );
 };
 
-export default ForumPage;
+export default Quest3Page;
 
 
 const AboutPopup = ({ onClose }) => {
@@ -279,7 +289,7 @@ const AboutPopup = ({ onClose }) => {
       <div className="about-popup-content">
         <button className="about-popup-close" onClick={onClose}><span style={{ color: 'red' }}>X</span></button>
         <h2>About this forum</h2>
-        <p>Welcome to the Gorilla Tag forum! This is a community for enthusiasts, players, and fans of Gorilla Tag to share tips, strategies, and experiences. Join us to become part of our growing community.</p>
+        <p>Welcome to the Quest 3 Forum. This community is dedicated to discussing all things related to the latest news for the Oculus Quest 3. Whether you're a seasoned VR enthusiast or just getting started, feel free to join the conversation, ask questions, and share your experiences with fellow Quest 3 users.</p>
         <h3>Forum Rules</h3>
         <ol>
           <li>Be respectful to other members.</li>

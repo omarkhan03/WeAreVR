@@ -1,7 +1,7 @@
 import "./SecondProfile.css";
 import CustomAppBar from "../components/CustomAppBar";
 
-function SecondProfile({ setPage }) {
+function SecondProfile() {
   return (
     <>
       <CustomAppBar />
@@ -14,8 +14,7 @@ function SecondProfile({ setPage }) {
       <div className="profile-name">
         {" "}
         {/* Add this div for the name */}
-        <h2 style={{ color: "white" }}>{"Gorrila Kid"}</h2>{" "}
-        {/* Display the name */}
+        <h2 style={{ color: "white" }}>{"Monkey 3"}</h2>{" "}
       </div>
       <div className="description-section">
         <textarea
