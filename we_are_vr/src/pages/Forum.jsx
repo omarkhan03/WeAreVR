@@ -173,13 +173,18 @@ const ForumPage = () => {
             </div>
 
             <div className="header-icons">
-              <button className="about-button" onClick={toggleAboutPopup}>About</button>
-              {isLoggedIn && isForumJoined() ? (
+            <button className="about-button">About</button>
+            {isLoggedIn ? (
+              isForumJoined() ? (
                 <button className="green-button" onClick={toggleJoined}>Joined</button>
               ) : (
-                <button className="join-button" onClick={toggleJoined} >Join</button>
-              )}
-            </div>
+                <button className="join-button" onClick={toggleJoined}>Join</button>
+              )
+            ) : (
+              <p>Login to join forum</p>
+            )}
+          </div>
+
           </header>
 
 
@@ -196,10 +201,14 @@ const ForumPage = () => {
                     <div className="message-text" dangerouslySetInnerHTML={{ __html: message.text }}></div>
                     {message.likes !== undefined && (
                       <div className="video-post-actions">
-                        <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={() => handleLike(message.id)}>
+                        <button disabled={!isLoggedIn} onClick={() => isLoggedIn && handleLike(message.id)}>
                           Like ({message.likes})
                         </button>
-                        <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={() => handleReply(message.user)}>Reply</button>
+
+                        <button disabled={!isLoggedIn} onClick={() => isLoggedIn && handleReply(message.user)}>
+                          Reply
+                        </button>
+
                         <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={handleShare}>Share</button>
                       </div>
                     )}
@@ -215,7 +224,27 @@ const ForumPage = () => {
               onChange={handleFileSelected} // This simulates adding a video message when a file is selected
             />
 
-            <div className="message-input-container">
+            {
+              isLoggedIn ? (
+                <div className="message-input-container">
+                  <button className="send-message-button" style={{ marginRight: "1rem" }} onClick={handleUploadClick}>Upload media</button>
+                  <input
+                    type="text"
+                    className="message-input"
+                    placeholder="Type a message..."
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onKeyPress={handleKeyPress}
+                  />
+                  <button className="send-message-button" onClick={handleSubmit}>Send</button>
+                </div>
+              ) : (
+                <p>Please log in to send messages.</p>
+              )
+            }
+
+
+            {/* <div className="message-input-container">
               <button className="send-message-button" style={{marginRight:"1rem"}} onClick={handleUploadClick}>Upload media</button>
               <input
                 type="text"
@@ -226,7 +255,7 @@ const ForumPage = () => {
                 onKeyPress={handleKeyPress}
               />
               <button className="send-message-button" onClick={handleSubmit}>Send</button>
-            </div>
+            </div> */}
           </main>
 
         </div>
