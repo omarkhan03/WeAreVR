@@ -10,7 +10,7 @@ const handleForumClick = (forumName, history) => {
         "v/MineCraft": "/Forum",
         "v/Fortnite": "/Forum",
         "v/Apex Legends": "/Forum",
-        "v/BeatSaber": "/Forum",
+        "v/beatsaber": "/Forum",
         // Add the rest of the forums and their paths here
     };
 
