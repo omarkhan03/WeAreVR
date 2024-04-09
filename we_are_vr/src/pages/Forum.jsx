@@ -36,6 +36,13 @@ const ForumPage = () => {
     }
   };
 
+  const [showAboutPopup, setShowAboutPopup] = useState(false);
+
+  // Function to toggle the about popup
+  const toggleAboutPopup = () => {
+    setShowAboutPopup(!showAboutPopup);
+  };
+
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useState([
     {
@@ -166,7 +173,7 @@ const ForumPage = () => {
             </div>
 
             <div className="header-icons">
-              <button className="about-button">About</button>
+              <button className="about-button" onClick={toggleAboutPopup}>About</button>
               {isLoggedIn && isForumJoined() ? (
                 <button className="green-button" onClick={toggleJoined}>Joined</button>
               ) : (
@@ -224,8 +231,30 @@ const ForumPage = () => {
 
         </div>
       </Box>
+      {showAboutPopup && <AboutPopup onClose={toggleAboutPopup} />}
     </div>
   );
 };
 
 export default ForumPage;
+
+
+const AboutPopup = ({ onClose }) => {
+  return (
+    <div className="about-popup-overlay">
+      <div className="about-popup-content">
+        <button className="about-popup-close" onClick={onClose}>X</button>
+        <h2>About this forum</h2>
+        <p>Welcome to the Gorilla Tag forum! This is a community for enthusiasts, players, and fans of Gorilla Tag to share tips, strategies, and experiences. Join us to become part of our growing community.</p>
+        <h3>Forum Rules</h3>
+        <ol>
+          <li>Be respectful to other members.</li>
+          <li>No spamming or self-promotion.</li>
+          <li>Keep discussions on topic.</li>
+          <li>No sharing of illegal content.</li>
+        </ol>
+        {/* Add more content as needed */}
+      </div>
+    </div>
+  );
+};

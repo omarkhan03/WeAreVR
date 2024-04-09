@@ -253,3 +253,50 @@ header div img {
   background: #2f3136;
 }
 
+
+/* AboutPopup.css */
+
+.about-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.about-popup-content {
+  position: relative; /* This allows absolute positioning relative to the popup */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  max-height: 80%;
+  overflow-y: auto; /* Makes content scrollable if it overflows */
+  color: black /* Ensure text is black */;
+}
+
+.about-popup-content h2 {
+  color: black;
+}
+
+.about-popup-close {
+  position: absolute;
+  top: 10px; /* Adjust as needed to move outside or top-right inside the popup */
+  right: 10px; /* Adjust as needed */
+  border: none;
+  background: #000000; /* Light background for the button */
+  border-radius: 50%; /* Circle shape */
+  width: 30px; /* Fixed size */
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
