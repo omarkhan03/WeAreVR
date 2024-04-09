@@ -10,7 +10,12 @@ From their profile page, users can also view their subscribed forums and manage 
 The application also features a login system that allows users to access their subscribed forums and post comments,upload images or  videos. 
 
 # How to run
-To run the application, clone the repository, next, navigate to the project directory and run the following commands: >> npm install >> npm run dev
+To run the application
+- clone the repository,
+- navigate to the project directory(cd we_are_vr)  
+- run the following commands: 
+    * `npm install` 
+    * `npm run dev`
 
 # Login
 To login, click the profile icon, then click the login dropdown. Enter the following credentials:
@@ -19,10 +24,20 @@ To login, click the profile icon, then click the login dropdown. Enter the follo
 # Clickable Forums
 As part of the requirements for this project, not all the Forums have a unique page to visit. Only the Gorilla Tag and Quest 3 Forums have unique pages. The rest of the forums are just placeholders and will navigate to the Gorilla Tag page.
 # Features
-- Join & Leave a forum from the forum page
-- Search for a forum and leave a forum from the profile page
-- Post comments, images, and videos on a forum
-- Like, Reply, and Share a video
-- Join & Leave a forum
-- View other users' profiles (i.e. Monkey3,GorillaBoy)
+## Home page
+- Search for a forum (keep in mind that only the Gorilla Tag and Quest 3 forums have unique pages and the rest will navigate to the Gorilla Tag page)
+- When logged in Search Subscribed Forums and click on a forum to view the forum page
+- Else if the user is not logged in, the user can click "Login" to login
+
+## Forum page
+- When logged in they can perform the following actions: 
+    - Join & Leave a forum from the forum page
+    - Post comments, images, and videos on a forum
+    - Like, Reply, and Share a video
+- Click other users' profiles (i.e. Monkey3,GorillaBoy)
+- Learn more about the forum by clicking the "About" tab
+
+## Profile page (click on the profile icon on the top right corner)
+- Search for a forum then click on a forum to view the forum page
+- leave a forum
 - Edit profile picture and description
