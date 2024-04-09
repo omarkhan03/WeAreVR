@@ -89,14 +89,30 @@ const ForumPage = () => {
     },
   ]);
 
+  // const handleLike = (id) => {
+  //   setMessages(messages.map(message => {
+  //     if (message.id === id) {
+  //       return { ...message, likes: message.likes + 1 };
+  //     }
+  //     return message;
+  //   }));
+  // };
+
   const handleLike = (id) => {
     setMessages(messages.map(message => {
       if (message.id === id) {
-        return { ...message, likes: message.likes + 1 };
+        // Toggle the liked state and adjust likes count accordingly
+        const isLikedByUser = message.isLikedByUser || false; // Default to false if undefined
+        return {
+          ...message,
+          likes: isLikedByUser ? message.likes - 1 : message.likes + 1, // Decrease if already liked, otherwise increase
+          isLikedByUser: !isLikedByUser, // Toggle the flag
+        };
       }
       return message;
     }));
   };
+  
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
