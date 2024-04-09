@@ -89,7 +89,7 @@ const ForumPage = () => {
     const newMessage = {
       id: messages.length + 1,
       user: "Aryan",
-      date: new Date().toLocaleString(),
+      date: "Mar 6 3:30am",
       text: inputValue,
       imgSrc: "../../images/profile.png",
     };
@@ -104,6 +104,11 @@ const ForumPage = () => {
     }
   };
 
+  const handleShare = () => {
+    // Show a browser alert window.
+    alert('Link to the video has been copied to your clipboard!');
+  };
+
   // Function to handle the reply click
   const handleReply = (username) => {
     // Set the input value to "@username", focused at the end of the input
@@ -114,8 +119,31 @@ const ForumPage = () => {
     document.querySelector('.message-input').focus();
   };
 
+    // This function simulates adding a new video message
+    const handleFileSelected = () => {
+      const newMessage = {
+        id: messages.length + 1, // Ensure unique ID
+        user: "Aryan", // Example user, adjust as needed
+        date: "Mar 6 3:30am", // Current date and time
+        text: `<iframe src="https://www.youtube.com/embed/HeR2DQAwCf4" frameborder="0" allowfullscreen></iframe>`, // Sample video
+        imgSrc: "../../images/profile.png",
+        likes: 0, // Starting likes count
+      };
+  
+      setMessages([...messages, newMessage]);
+    };
+  
+    // Triggers the hidden file input when the "Upload media" button is clicked
+    const handleUploadClick = () => {
+      document.getElementById('hiddenFileInput').click();
+    };
+
   return (
+
+    
     <div>
+
+      
       <Box
         sx={{
           display: "grid",
@@ -165,7 +193,7 @@ const ForumPage = () => {
                           Like ({message.likes})
                         </button>
                         <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={() => handleReply(message.user)}>Reply</button>
-                        <button style={{ backgroundColor: "#0056b3", color: "white" }}>Share</button>
+                        <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={handleShare}>Share</button>
                       </div>
                     )}
                   </div>
@@ -173,8 +201,15 @@ const ForumPage = () => {
               ))}
             </div>
 
+            <input
+              type="file"
+              id="hiddenFileInput"
+              style={{ display: 'none' }}
+              onChange={handleFileSelected} // This simulates adding a video message when a file is selected
+            />
+
             <div className="message-input-container">
-              <button className="send-message-button" style={{marginRight:"1rem"}}>Upload media</button>
+              <button className="send-message-button" style={{marginRight:"1rem"}} onClick={handleUploadClick}>Upload media</button>
               <input
                 type="text"
                 className="message-input"
