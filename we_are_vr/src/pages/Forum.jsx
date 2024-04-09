@@ -104,6 +104,16 @@ const ForumPage = () => {
     }
   };
 
+  // Function to handle the reply click
+  const handleReply = (username) => {
+    // Set the input value to "@username", focused at the end of the input
+    setInputValue(prev => prev + `@${username} `);
+    
+    // Focus the input element after setting the value
+    // Assuming you have only one input on the page or you can give an id to your input and use document.getElementById
+    document.querySelector('.message-input').focus();
+  };
+
   return (
     <div>
       <Box
@@ -154,7 +164,7 @@ const ForumPage = () => {
                         <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={() => handleLike(message.id)}>
                           Like ({message.likes})
                         </button>
-                        <button style={{ backgroundColor: "#0056b3", color: "white" }}>Reply (0)</button>
+                        <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={() => handleReply(message.user)}>Reply</button>
                         <button style={{ backgroundColor: "#0056b3", color: "white" }}>Share</button>
                       </div>
                     )}
@@ -162,6 +172,7 @@ const ForumPage = () => {
                 </div>
               ))}
             </div>
+
             <div className="message-input-container">
               <button className="send-message-button" style={{marginRight:"1rem"}}>Upload media</button>
               <input
