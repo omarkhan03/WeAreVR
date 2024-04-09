@@ -44,8 +44,8 @@ function Profile() {
   const history = useHistory();
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [tempDescription, setTempDescription] = useState(description);
-  const [profilePic, setProfilePic] = useState('../../images/profile.png'); // Default profile picture
-  const [coverPhoto, setCoverPhoto] = useState('../../images/cover-default.jpg'); // Default cover photo
+  const [profilePic, setProfilePic] = useState('../../public/profile.png'); // Default profile picture
+  const [coverPhoto, setCoverPhoto] = useState('../../public/cover-default.jpg'); // Default cover photo
   const fileInputRef = React.createRef(); // Ref for profile picture file input
   const coverPhotoInputRef = React.createRef(); // Ref for cover photo file input
 

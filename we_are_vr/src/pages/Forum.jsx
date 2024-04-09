@@ -63,28 +63,28 @@ const ForumPage = () => {
       user: "GorillaBoy",
       date: "Mar 6 3:02am",
       text: "Hey do you wanna see some awesome clips I recorded yesterday?",
-      imgSrc: "../../images/gorilla2.jpeg",
+      imgSrc: "../../public/gorilla2.jpeg",
     },
     {
       id: 2,
       user: "Monkey3",
       date: "Mar 6 3:02am",
       text: "Sure lets see them.",
-      imgSrc: "../../images/gorilla3.webp",
+      imgSrc: "../../public/gorilla3.webp",
     },
     {
       id: 3,
       user: "GorillaBoy",
       date: "Mar 6 3:02am",
       text: "Aight here it is! Enjoy",
-      imgSrc: "../../images/gorilla2.jpeg",
+      imgSrc: "../../public/gorilla2.jpeg",
     },
     {
       id: 4,
       user: "GorillaBoy",
       date: "Mar 6 3:15am",
       text: `<iframe src="https://www.youtube.com/embed/4aLNmN1DVts" frameborder="0" allowfullscreen></iframe>`,
-      imgSrc: "../../images/gorilla2.jpeg",
+      imgSrc: "../../public/gorilla2.jpeg",
       likes: 3, // like count state for video post
     },
   ]);
@@ -111,7 +111,7 @@ const ForumPage = () => {
       user: "Aryan",
       date: "Mar 6 3:30am",
       text: inputValue,
-      imgSrc: "../../images/profile.png",
+      imgSrc: "../../public/profile.png",
     };
 
     setMessages([...messages, newMessage]);
@@ -146,7 +146,7 @@ const ForumPage = () => {
         user: "Aryan", // Example user, adjust as needed
         date: "Mar 6 3:30am", // Current date and time
         text: `<iframe src="https://www.youtube.com/embed/HeR2DQAwCf4" frameborder="0" allowfullscreen></iframe>`, // Sample video
-        imgSrc: "../../images/profile.png",
+        imgSrc: "../../public/profile.png",
         likes: 0, // Starting likes count
       };
   
@@ -181,7 +181,7 @@ const ForumPage = () => {
             <p style={{ color: "black" }}>.</p>
 
             <div>
-              <img src="../../images/gorilla.jpeg" alt="" />
+              <img src="../../public/gorilla.jpeg" alt="" />
               <h2>Gorilla Tag</h2>
             </div>
 
@@ -231,7 +231,7 @@ const ForumPage = () => {
             </div>
 
             {/* <div className="message">
-              <img src="../../images/gorilla2.jpeg" alt=""onClick= {() => goToOtherProfile(10)} />
+              <img src="../../public/gorilla2.jpeg" alt=""onClick= {() => goToOtherProfile(10)} />
               <div>
                 <div>
                   <div className="message-user" onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
