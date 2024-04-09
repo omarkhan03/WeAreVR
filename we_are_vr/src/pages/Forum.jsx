@@ -39,6 +39,118 @@ const ForumPage = () => {
       }
     }
   };
+
+
+  const [showAboutPopup, setShowAboutPopup] = useState(false);
+
+  // Function to toggle the about popup
+  const toggleAboutPopup = () => {
+    setShowAboutPopup(!showAboutPopup);
+  };
+
+  const [inputValue, setInputValue] = useState('');
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      user: "GorillaBoy",
+      date: "Mar 6 3:02am",
+      text: "Hey do you wanna see some awesome clips I recorded yesterday?",
+      imgSrc: "../../images/gorilla2.jpeg",
+    },
+    {
+      id: 2,
+      user: "Monkey3",
+      date: "Mar 6 3:02am",
+      text: "Sure lets see them.",
+      imgSrc: "../../images/gorilla3.webp",
+    },
+    {
+      id: 3,
+      user: "GorillaBoy",
+      date: "Mar 6 3:02am",
+      text: "Aight here it is! Enjoy",
+      imgSrc: "../../images/gorilla2.jpeg",
+    },
+    {
+      id: 4,
+      user: "GorillaBoy",
+      date: "Mar 6 3:15am",
+      text: `<iframe src="https://www.youtube.com/embed/4aLNmN1DVts" frameborder="0" allowfullscreen></iframe>`,
+      imgSrc: "../../images/gorilla2.jpeg",
+      likes: 3, // like count state for video post
+    },
+  ]);
+
+  const handleLike = (id) => {
+    setMessages(messages.map(message => {
+      if (message.id === id) {
+        return { ...message, likes: message.likes + 1 };
+      }
+      return message;
+    }));
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+
+    const newMessage = {
+      id: messages.length + 1,
+      user: "Aryan",
+      date: "Mar 6 3:30am",
+      text: inputValue,
+      imgSrc: "../../images/profile.png",
+    };
+
+    setMessages([...messages, newMessage]);
+    setInputValue('');
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      handleSubmit(e);
+    }
+  };
+
+  const handleShare = () => {
+    // Show a browser alert window.
+    alert('Link to the video has been copied to your clipboard!');
+  };
+
+  // Function to handle the reply click
+  const handleReply = (username) => {
+    // Set the input value to "@username", focused at the end of the input
+    setInputValue(prev => prev + `@${username} `);
+    
+    // Focus the input element after setting the value
+    // Assuming you have only one input on the page or you can give an id to your input and use document.getElementById
+    document.querySelector('.message-input').focus();
+  };
+
+    // This function simulates adding a new video message
+    const handleFileSelected = () => {
+      const newMessage = {
+        id: messages.length + 1, // Ensure unique ID
+        user: "Aryan", // Example user, adjust as needed
+        date: "Mar 6 3:30am", // Current date and time
+        text: `<iframe src="https://www.youtube.com/embed/HeR2DQAwCf4" frameborder="0" allowfullscreen></iframe>`, // Sample video
+        imgSrc: "../../images/profile.png",
+        likes: 0, // Starting likes count
+      };
+  
+      setMessages([...messages, newMessage]);
+    };
+  
+    // Triggers the hidden file input when the "Upload media" button is clicked
+    const handleUploadClick = () => {
+      document.getElementById('hiddenFileInput').click();
+    };
+
+
   const goToOtherProfile = (id) => {
     console.log("Navigating to profile with id: ", id);
     if (id === 10) {
@@ -49,8 +161,13 @@ const ForumPage = () => {
     }
     // history.push('/visitProfile');
   }
+
   return (
+
+    
     <div>
+
+      
       <Box
         sx={{
           display: "grid",
@@ -73,41 +190,48 @@ const ForumPage = () => {
             </div>
 
             <div className="header-icons">
-              <button className="about-button">About</button>
-              {isLoggedIn && isForumJoined() ? (
+            <button className="about-button" onClick={toggleAboutPopup}>About</button>
+            {isLoggedIn ? (
+              isForumJoined() ? (
                 <button className="green-button" onClick={toggleJoined}>Joined</button>
               ) : (
-                <button className="join-button" onClick={toggleJoined} >Join</button>
-              )}
-            </div>
+                <button className="join-button" onClick={toggleJoined}>Join</button>
+              )
+            ) : (
+              <p>Login to join forum</p>
+            )}
+          </div>
+
           </header>
 
 
           <main className="forum-main">
             <div className="messages-container">
 
-              <div className="message">
-                <img src="../../images/gorilla2.jpeg" alt="" onClick= {() => goToOtherProfile(10)}/>
-                <div>
+              {messages.map((message) => (
+                <div key={message.id} className="message">
+                  <img src={message.imgSrc} alt="" />
                   <div>
-                    <div className="message-user"onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
-                    <div className="date">Mar 6 3:02am</div>
-                  </div>
-                  <div className="message-text">Hey do you wanna see some awesome clips I recorded yesterday?</div>
-                </div>
-              </div>
+                    <div>
+                      <div className="message-user">{message.user}</div>
+                      <div className="date">{message.date}</div>
+                    </div>
+                    <div className="message-text" dangerouslySetInnerHTML={{ __html: message.text }}></div>
+                    {message.likes !== undefined && (
+                      <div className="video-post-actions">
+                        <button disabled={!isLoggedIn} onClick={() => isLoggedIn && handleLike(message.id)}>
+                          Like ({message.likes})
+                        </button>
 
-              <div className="message">
-                <img src="../../images/gorilla3.webp" alt="" onClick= {() => goToOtherProfile(11)}/>
-                <div>
-                  <div>
-                    <div className="message-user"onClick= {() => goToOtherProfile(11)}>Monkey3</div>
-                    <div className="date">Mar 6 3:02am</div>
-                  </div>
-                  <div className="message-text">Sure lets see them.</div>
-                </div>
-              </div>
 
+                        <button disabled={!isLoggedIn} onClick={() => isLoggedIn && handleReply(message.user)}>
+                          Reply
+                        </button>
+
+
+                        <button style={{ backgroundColor: "#0056b3", color: "white" }} onClick={handleShare}>Share</button>
+                      </div>
+                    )}
 
               <div className="message">
                 <img src="../../images/gorilla2.jpeg" alt=""onClick= {() => goToOtherProfile(10)} />
@@ -115,9 +239,13 @@ const ForumPage = () => {
                   <div>
                     <div className="message-user" onClick= {() => goToOtherProfile(10)}>GorillaBoy</div>
                     <div className="date">Mar 6 3:02am</div>
+
                   </div>
-                  <div className="message-text">Aight here it is! Enjoy</div>
                 </div>
+
+              ))}
+            </div>
+
               </div>
 
               <div className="message">
@@ -134,27 +262,74 @@ const ForumPage = () => {
                       <button>Reply (0)</button>
                       <button>Share</button>
 
-                    </div>
-                  </div>
 
+            <input
+              type="file"
+              id="hiddenFileInput"
+              style={{ display: 'none' }}
+              onChange={handleFileSelected} // This simulates adding a video message when a file is selected
+            />
+
+            {
+              isLoggedIn ? (
+                <div className="message-input-container">
+                  <button className="send-message-button" style={{ marginRight: "1rem" }} onClick={handleUploadClick}>Upload media</button>
+                  <input
+                    type="text"
+                    className="message-input"
+                    placeholder="Type a message..."
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onKeyPress={handleKeyPress}
+                  />
+                  <button className="send-message-button" onClick={handleSubmit}>Send</button>
                 </div>
-              </div>
+              ) : (
+                <p>Please log in to send messages.</p>
+              )
+            }
 
 
-
-              {/* Repeat for each message */}
-            </div>
-            <div className="message-input-container">
-              <button className="send-message-button" style={{ marginRight: "1rem" }}>Upload media</button>
-              <input type="text" className="message-input" placeholder="Type a message..." />
-              <button className="send-message-button">Send</button>
-            </div>
+            {/* <div className="message-input-container">
+              <button className="send-message-button" style={{marginRight:"1rem"}} onClick={handleUploadClick}>Upload media</button>
+              <input
+                type="text"
+                className="message-input"
+                placeholder="Type a message..."
+                value={inputValue}
+                onChange={handleInputChange}
+                onKeyPress={handleKeyPress}
+              />
+              <button className="send-message-button" onClick={handleSubmit}>Send</button>
+            </div> */}
           </main>
 
         </div>
       </Box>
+      {showAboutPopup && <AboutPopup onClose={toggleAboutPopup} />}
     </div>
   );
 };
 
 export default ForumPage;
+
+
+const AboutPopup = ({ onClose }) => {
+  return (
+    <div className="about-popup-overlay">
+      <div className="about-popup-content">
+        <button className="about-popup-close" onClick={onClose}>X</button>
+        <h2>About this forum</h2>
+        <p>Welcome to the Gorilla Tag forum! This is a community for enthusiasts, players, and fans of Gorilla Tag to share tips, strategies, and experiences. Join us to become part of our growing community.</p>
+        <h3>Forum Rules</h3>
+        <ol>
+          <li>Be respectful to other members.</li>
+          <li>No spamming or self-promotion.</li>
+          <li>Keep discussions on topic.</li>
+          <li>No sharing of illegal content.</li>
+        </ol>
+        {/* Add more content as needed */}
+      </div>
+    </div>
+  );
+};
