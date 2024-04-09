@@ -36,8 +36,8 @@ function EditDescriptionPopup({ onSave, onCancel, description, setDescription })
   );
 }
 
-function Profile({ setPage }) {
-  const [description, setDescription] = useState('This is a default description.');
+function Profile() {
+  const [description, setDescription] = useState('Hi Im Aryan, Welcome to my profile! I am interested in VR and AR technologies. I love playing VR games and I staying updated with the latest VR news. Feel free to follow me on youtube! www.youtube.com');
   const [name, setName] = useState('Aryan');
   const [searchedForum, setSearchedForum] = useState('');
   const [allsubscribedForums, setAllSubscribedForums] = useState(JSON.parse(localStorage.getItem('SubscribedForums')));
@@ -134,7 +134,6 @@ function Profile({ setPage }) {
       <textarea
           className="description-edit"
           value={description}
-          
         />
         <button onClick={handleEditDescription} className="edit-description-button">Edit Description</button>
       </div>
@@ -148,14 +147,14 @@ function Profile({ setPage }) {
       )}
       <div className='joined-forum'>
         <h2>Joined Forums</h2>
-        <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />
+        {!showEditPopup && <ProfileSearchSubscriptions barWidth="40rem" onForumChange={handleForumChange} />}
       </div>
       <div className="forums-item">
         {filteredForums.map(forum => (
           <div key={forum.id} className="forum-item">
             <img src={forum.imageUrl} alt="Forum" className="forum-image" />
             <div className="forum-info">
-              <h4 style={{ textDecoration: 'underline',cursor: 'pointer'}} onClick={() => handleForumClick("v/Gorilla Tag",history)}>{forum.name}</h4>
+              <h4 style={{ textDecoration: 'underline'}} ><span onClick={() => handleForumClick("v/Gorilla Tag",history)} style={{cursor: 'pointer'}}>{forum.name}</span></h4>
               <p style={{ color: "white" }}>{forum.description}</p>
             </div>
             <button onClick={() => removeSelectedForum(forum.id)} className="leave-button" style={{ backgroundColor: "#007bff", color: "white" }}>Leave</button>

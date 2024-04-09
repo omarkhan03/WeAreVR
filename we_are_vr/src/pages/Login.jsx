@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css'; // Make sure the CSS file is in the same directory and named 'Login.css'
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import subscribedForums from '../Data/SubscribedForums';
 
 function Login({ setLoggedIn }) {
@@ -62,12 +62,11 @@ function Login({ setLoggedIn }) {
         </div>
 
         <div className="form-footer">
-  {/* <button className='submit-button' type="submit">Login</button> */}
-  <span className="forgot-password" onClick={handleForgotPassword}>Forgot Password?</span>
-</div>
-
-    <button  className='submit-button' type="submit">Login</button>
-
+          {/* <button className='submit-button' type="submit">Login</button> */}
+          <span className="forgot-password" onClick={handleForgotPassword}>Forgot Password?</span>
+        </div>
+        <button className='submit-button' type="submit">Login</button>
+        <Link to="/home" style={{ color: 'inherit', textDecoration: 'inherit',fontSize:'0.7rem' }}>Go to Home</Link>
       </form>
       {showPopup && (
         <div className="popup">
