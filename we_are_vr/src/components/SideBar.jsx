@@ -38,7 +38,7 @@ export default function TheSideBar() {
       width: 250,
     }} role="presentation">
       <Typography variant="h5" margin={"1rem 0"}>
-        Subscribed Forums
+      Joined Forums
       </Typography>
       <Divider variant="middle" />
       {
@@ -56,7 +56,7 @@ export default function TheSideBar() {
             ))}
           </List></>
         ) : ( //else user is not logged in so show login button
-          <Typography variant="h6"><a style={{ text_Decoration: 'none', color: 'red', textDecoration: 'underline' }} href="/login" >Login</a> to view your Subscribed Forums</Typography>
+          <Typography variant="h6"><a style={{ text_Decoration: 'none', color: 'red', textDecoration: 'underline' }} href="/login" >Login</a> to view your Joined Forums</Typography>
         )
       }
     </Box >
