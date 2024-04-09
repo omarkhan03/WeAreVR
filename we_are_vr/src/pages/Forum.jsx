@@ -256,7 +256,8 @@ const ForumPage = () => {
                   <button className="send-message-button" onClick={handleSubmit}>Send</button>
                 </div>
               ) : (
-                <p>Please log in to send messages.</p>
+                <p>Please <a style={{ text_Decoration: 'none', color: 'red', textDecoration: 'underline' }} href="/login" >Login</a> to send messages.</p>
+
               )
             }
 
